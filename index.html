@@ -179,7 +179,6 @@ flex-wrap:wrap;
 color:#888;
 }
 
-</style>
 </head>
 
 <body>
@@ -279,67 +278,92 @@ color:#bdbdbd;
 margin-bottom:50px;
 }
 
-/* ---------- FEATURE & PRICING CARDS ---------- */
+/* ---------- FEATURE ---------- */
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
+<section id="features" class="section">
+
+<h2>Features</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>24/7 AI Replies</h3>
+<p>Your customers always receive an instant response.</p>
+</div>
+
+<div class="card">
+<h3>Lead Capture</h3>
+<p>Automatically collect customer details.</p>
+</div>
+
+<div class="card">
+<h3>WhatsApp Integration</h3>
+<p>Reply directly on WhatsApp using AI.</p>
+</div>
+
+<div class="card">
+<h3>Analytics</h3>
+<p>Track conversations and customer activity.</p>
+</div>
+
+</div>
+
+</section>
+
 }
 
-.card,.priceCard{
-background:#101010;
-border:1px solid #232323;
-border-radius:18px;
-padding:35px;
-transition:.35s;
-cursor:pointer;
-position:relative;
-overflow:hidden;
-}
+    /* ---------- PRICING ---------- */
 
-.card:hover,
-.priceCard:hover{
-transform:translateY(-10px) scale(1.03);
-border-color:#39ff14;
-box-shadow:
-0 0 20px rgba(57,255,20,.35),
-0 0 60px rgba(57,255,20,.12);
-}
+<section id="pricing" class="section">
 
-.card h3,
-.priceCard h3{
-margin-bottom:18px;
-color:#39ff14;
-}
+<h2>Pricing</h2>
 
-.priceCard h1{
-font-size:48px;
-margin:15px 0;
-}
+<div class="cards">
 
-.priceCard span{
-font-size:18px;
-color:#bdbdbd;
-}
+<div class="priceCard">
 
-.popular{
-border:2px solid #39ff14;
-}
+<h3>Starter</h3>
 
-.badge{
-position:absolute;
-top:18px;
-right:18px;
-background:#39ff14;
-color:black;
-padding:6px 12px;
-border-radius:30px;
-font-size:12px;
-font-weight:bold;
-}
+<h1>R800</h1>
 
-/* ---------- WAITLIST ---------- */
+<span>Setup</span>
+
+<p>R300/month</p>
+
+</div>
+
+<div class="priceCard popular">
+
+<div class="badge">Popular</div>
+
+<h3>Growth</h3>
+
+<h1>R1500</h1>
+
+<span>Setup</span>
+
+<p>R500/month</p>
+
+</div>
+
+<div class="priceCard">
+
+<h3>Pro</h3>
+
+<h1>R2500</h1>
+
+<span>Setup</span>
+
+<p>R600/month</p>
+
+</div>
+
+</div>
+
+</section>
+
+    
+  /* ---------- WAITLIST ---------- */
 
 #waitlistForm{
 max-width:650px;
@@ -369,7 +393,7 @@ box-shadow:0 0 18px rgba(57,255,20,.4);
 color:#888;
 }
 
-/* ---------- BUTTON ---------- */
+   /* ---------- BUTTON ---------- */
 
 .btn{
 background:#39ff14;
@@ -420,8 +444,6 @@ margin-left:75px;
 font-size:48px;
 }
 
-}
-
 <!-- CONTACT -->
 
 <section id="contact" class="section">
@@ -433,8 +455,6 @@ font-size:48px;
 <a href="https://wa.me/27626396812" class="btn">
 WhatsApp Us
 </a>
-
-</style>
 
 </section>
 
@@ -583,5 +603,12 @@ form.addEventListener("submit", async (e) => {
 
 </script>
 
+const menuBtn=document.getElementById("menuBtn");
+const sidebar=document.getElementById("sidebar");
+
+menuBtn.addEventListener("click",()=>{
+    sidebar.classList.toggle("collapsed");
+});
+    
 </body>
 </html>
