@@ -716,7 +716,7 @@ margin-bottom:30px;
     <form id="waitlistForm" style="max-width:450px;margin:auto;">
         <input
             type="text"
-            placeholder="Owner Name"
+            placeholder="Name"
             required
             style="width:100%;padding:16px;margin-bottom:15px;border:none;border-radius:10px;font-size:16px;"
         >
@@ -726,13 +726,7 @@ margin-bottom:30px;
             placeholder="Email Address"
             required
             style="width:100%;padding:16px;margin-bottom:15px;border:none;border-radius:10px;font-size:16px;"
-        >
-       <input
-            type="text"
-            placeholder="Business Type"
-            required
-            style="width:100%;padding:16px;margin-bottom:15px;border:none;border-radius:10px;font-size:16px;"
-        >
+         >
         <input
             type="text"
             placeholder="Business Name (Optional)"
@@ -752,12 +746,12 @@ margin-bottom:30px;
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
 const supabaseUrl = "https://eypckjjsgijqbfcxuaiv.supabase.co";
+
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5cGNrampzZ2lqcWJmY3h1YWl2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4OTAwNzAsImV4cCI6MjEwMTQ2NjA3MH0.PFJziOLIOGqHh2nXl_aF3qp5Gy-3_hcl0RtIW65LIQc";
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-document.getElementById("waitlistForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
+document.getElementById("waitlistForm").addEventListener("submit", async function (e) {e.preventDefault();
 
     const email = document.getElementById("email").value;
 
@@ -765,8 +759,7 @@ document.getElementById("waitlistForm").addEventListener("submit", async functio
         .from("waitlist")
         .insert([{ email }]);
 
-    if (error) {
-        alert("Something went wrong. Please try again.");
+    if (error) {alert("Something went wrong. Please try again.");
         console.error(error);
         return;
     }
@@ -774,6 +767,7 @@ document.getElementById("waitlistForm").addEventListener("submit", async functio
     document.getElementById("successMessage").style.display = "block";
     this.reset();
 });
+   
 </script>
     
 </section>
