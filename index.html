@@ -20,11 +20,9 @@ scroll-behavior:smooth;
 
 body{
 background:#070707;
-color:white;
+color:#fff;
 overflow-x:hidden;
 }
-
-/* Animated Cursor Glow */
 
 .cursor{
 position:fixed;
@@ -39,8 +37,6 @@ filter:blur(35px);
 transition:.05s;
 }
 
-/* Faded Background Logo */
-
 .backgroundLogo{
 position:fixed;
 top:50%;
@@ -49,9 +45,9 @@ transform:translate(-50%,-50%);
 font-size:12vw;
 font-weight:900;
 opacity:.03;
-user-select:none;
-pointer-events:none;
 letter-spacing:8px;
+pointer-events:none;
+user-select:none;
 z-index:-1;
 }
 
@@ -60,17 +56,32 @@ color:#39ff14;
 text-shadow:0 0 30px #39ff14;
 }
 
-/* Sidebar */
+.menuBtn{
+display:none;
+position:fixed;
+top:20px;
+left:20px;
+z-index:1001;
+background:#39ff14;
+color:#000;
+border:none;
+padding:12px 16px;
+border-radius:10px;
+font-size:20px;
+cursor:pointer;
+}
 
 .sidebar{
 position:fixed;
 left:0;
 top:0;
-height:100%;
 width:230px;
+height:100%;
 background:#0f0f0f;
 border-right:1px solid #202020;
 padding-top:40px;
+transition:.3s;
+z-index:1000;
 }
 
 .sidebar h2{
@@ -87,26 +98,22 @@ text-shadow:0 0 15px #39ff14;
 .sidebar a{
 display:block;
 padding:18px 30px;
-color:white;
+color:#fff;
 text-decoration:none;
-transition:.3s;
 border-left:3px solid transparent;
+transition:.3s;
 }
 
 .sidebar a:hover{
 background:#181818;
-border-left:3px solid #39ff14;
+border-left-color:#39ff14;
 padding-left:40px;
 box-shadow:0 0 15px #39ff1440;
 }
 
-/* Main */
-
 main{
 margin-left:230px;
 }
-
-/* Hero */
 
 .hero{
 height:100vh;
@@ -124,45 +131,129 @@ margin-bottom:20px;
 
 .hero h1 span{
 color:#39ff14;
-text-shadow:
-0 0 10px #39ff14,
-0 0 30px #39ff14,
-0 0 60px #39ff14;
+text-shadow:0 0 10px #39ff14,0 0 30px #39ff14,0 0 60px #39ff14;
 }
 
 .hero p{
-font-size:20px;
-color:#cfcfcf;
 max-width:700px;
 margin:auto;
+font-size:20px;
+color:#cfcfcf;
 }
 
-/* Buttons */
+.section{
+padding:100px 60px;
+margin-left:230px;
+text-align:center;
+}
 
+.section h2{
+font-size:50px;
+margin-bottom:20px;
+}
+
+.section p{
+color:#bdbdbd;
+margin-bottom:40px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.card,
+.priceCard{
+background:#111;
+border:1px solid #222;
+border-radius:16px;
+padding:30px;
+transition:.3s;
+position:relative;
+}
+
+.card:hover,
+.priceCard:hover{
+transform:translateY(-8px);
+border-color:#39ff14;
+box-shadow:0 0 30px rgba(57,255,20,.2);
+}
+
+.priceCard h1{
+font-size:48px;
+color:#39ff14;
+margin:15px 0;
+}
+
+.badge{
+position:absolute;
+top:15px;
+right:15px;
+background:#39ff14;
+color:#000;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+}
+
+#waitlistForm{
+max-width:650px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+#waitlistForm input,
+textarea{
+width:100%;
+padding:18px;
+background:#111;
+border:2px solid #222;
+border-radius:12px;
+color:#fff;
+font-size:16px;
+outline:none;
+transition:.3s;
+}
+
+#waitlistForm input:focus,
+textarea:focus{
+border-color:#39ff14;
+box-shadow:0 0 18px rgba(57,255,20,.4);
+}
+
+#waitlistForm input::placeholder,
+textarea::placeholder{
+color:#888;
+}
 
 .btn{
 display:inline-block;
-margin-top:35px;
+margin-top:25px;
 padding:16px 40px;
 background:#39ff14;
-color:black;
+color:#000;
+border:none;
+border-radius:12px;
+font-size:18px;
 font-weight:bold;
-border-radius:10px;
+cursor:pointer;
 text-decoration:none;
 transition:.25s;
-cursor:pointer;
 }
 
 .btn:hover{
-transform:scale(1.06);
-box-shadow:0 0 25px #39ff14;
+transform:translateY(-3px);
+box-shadow:0 0 30px #39ff14;
 }
 
 .btn:active{
 transform:scale(.95);
 }
-        
-/* Footer */
 
 footer{
 margin-left:230px;
@@ -172,10 +263,42 @@ border-top:1px solid #202020;
 display:flex;
 justify-content:space-between;
 flex-wrap:wrap;
+gap:30px;
 color:#888;
 }
 
+@media(max-width:900px){
+
+.menuBtn{
+display:block;
+}
+
+.sidebar{
+left:-230px;
+}
+
+.sidebar.collapsed{
+left:0;
+}
+
+main,
+.section,
+footer{
+margin-left:0;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.section{
+padding:80px 25px;
+}
+
+}
+
 </style>
+
 </head>
 <body>
 
