@@ -712,7 +712,18 @@ email,
 business_name
 }
 ]);
-                                                                                          
+                                                                                       
+if (error) {
+    alert("Error: " + error.message);
+    return;
+}
+
+document.getElementById("successMessage").style.display = "block";
+document.getElementById("waitlistForm").reset();
+});
+   
+</script>
+                                                                                       
 </script>
     
 </section>
