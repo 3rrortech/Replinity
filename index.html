@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,6 +104,10 @@ border-left:3px solid transparent;
 transition:.3s;
 }
 
+    .sidebar.active{
+    left:0;
+    }
+    
 .sidebar a:hover{
 background:#181818;
 border-left-color:#39ff14;
@@ -494,8 +496,7 @@ Everything your business needs to respond to customers automatically.
 
 <h2>Join The Replinity Waitlist</h2>
 
-<p>
-Be among the first businesses to experience AI-powered customer replies.
+<p>Be among the first businesses to experience AI-powered customer replies.
 </p>
 
 <form id="waitlistForm">
@@ -569,6 +570,7 @@ Send Feedback
 </section>
 
 </main>
+    
 <!-- ========================= -->
 <!-- ABOUT REPLINITY -->
 <!-- ========================= -->
@@ -754,8 +756,8 @@ form.reset();
 const menuBtn=document.getElementById("menuBtn");
 const sidebar=document.getElementById("sidebar");
 
-menuBtn.addEventListener("click",()=>{
-sidebar.classList.toggle("collapsed");
+menuBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
 });
 
 </script>
