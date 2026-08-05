@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Replinity | Never Miss A Customer Again</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#070707;
+color:white;
+overflow-x:hidden;
+}
+
+/* Animated Cursor Glow */
+
+.cursor{
+position:fixed;
+width:220px;
+height:220px;
+background:radial-gradient(circle,#39ff1450,transparent 70%);
+pointer-events:none;
+border-radius:50%;
+transform:translate(-50%,-50%);
+z-index:9999;
+filter:blur(35px);
+transition:.05s;
+}
+
+/* Faded Background Logo */
+
+.backgroundLogo{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:12vw;
+font-weight:900;
+opacity:.03;
+user-select:none;
+pointer-events:none;
+letter-spacing:8px;
+z-index:-1;
+}
+
+.backgroundLogo span{
+color:#39ff14;
+text-shadow:0 0 30px #39ff14;
+}
+
+/* Sidebar */
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+height:100%;
+width:230px;
+background:#0f0f0f;
+border-right:1px solid #202020;
+padding-top:40px;
+}
+
+.sidebar h2{
+text-align:center;
+margin-bottom:40px;
+font-size:30px;
+}
+
+.sidebar h2 span{
+color:#39ff14;
+text-shadow:0 0 15px #39ff14;
+}
+
+.sidebar a{
+display:block;
+padding:18px 30px;
+color:white;
+text-decoration:none;
+transition:.3s;
+border-left:3px solid transparent;
+}
+
+.sidebar a:hover{
+background:#181818;
+border-left:3px solid #39ff14;
+padding-left:40px;
+box-shadow:0 0 15px #39ff1440;
+}
+
+/* Main */
+
+main{
+margin-left:230px;
+}
+
+/* Hero */
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:70px;
+margin-bottom:20px;
+}
+
+.hero h1 span{
+color:#39ff14;
+text-shadow:
+0 0 10px #39ff14,
+0 0 30px #39ff14,
+0 0 60px #39ff14;
+}
+
+.hero p{
+font-size:20px;
+color:#cfcfcf;
+max-width:700px;
+margin:auto;
+}
+
+/* Buttons */
+
+
+.btn{
+display:inline-block;
+margin-top:35px;
+padding:16px 40px;
+background:#39ff14;
+color:black;
+font-weight:bold;
+border-radius:10px;
+text-decoration:none;
+transition:.25s;
+cursor:pointer;
+}
+
+.btn:hover{
+transform:scale(1.06);
+box-shadow:0 0 25px #39ff14;
+}
+
+.btn:active{
+transform:scale(.95);
+}
+
+/* Footer */
+
+footer{
+margin-left:230px;
+padding:60px 40px;
+background:#090909;
+border-top:1px solid #202020;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+color:#888;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+
+<div class="backgroundLogo">
+REPLI<span>NITY</span>
+</div>
+
+<div class="sidebar">
+
+<h2>Repli<span>nity</span></h2>
+
+<a href="#features">Features</a>
+<a href="#pricing">Pricing</a>
+<a href="#feedback">Feedback</a>
+<a href="#contact">Contact</a>
+
+</div>
+
+<main>
+
+<section class="hero">
+
+<div>
+
+<h1>REPLI<span>NITY</span></h1>
+
+<p>
+Never Miss A Customer Again.
+AI replies instantly to your customers 24/7.
+</p>
+
+<a href="#waitlist" class="btn">Join Waitlist</a>
+
+</div>
+
+</section>
+
+<!-- WAITLIST -->
+
+<section id="waitlist" class="section">
+
+<h2>Join The Replinity Waitlist</h2>
+
+<p>Be among the first businesses to experience AI-powered customer replies.</p>
+
+<form id="waitlistForm">
+
+<input
+type="text"
+id="owner"
+placeholder="Your Name"
+required>
+
+<input
+type="text"
+id="business"
+placeholder="Business Name"
+required>
+
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required>
+
+<button type="submit" class="btn">Join Waitlist
+</button>
+
+</form>
+
+<p id="successMessage" style="display:none;color:#39ff14;margin-top:20px;font-size:18px;">✅ Welcome to the Replinity Waitlist! We'll contact you before launch.
+</p>
+
+</section>
+
+/* ---------- SECTION ---------- */
+
+
+.section{
+padding:100px 60px;
+margin-left:230px;
+text-align:center;
+}
+
+.section h2{
+font-size:50px;
+margin-bottom:20px;
+}
+
+.section p{
+color:#bdbdbd;
+margin-bottom:50px;
+}
+
+/* ---------- FEATURE & PRICING CARDS ---------- */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card,.priceCard{
+background:#101010;
+border:1px solid #232323;
+border-radius:18px;
+padding:35px;
+transition:.35s;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover,
+.priceCard:hover{
+transform:translateY(-10px) scale(1.03);
+border-color:#39ff14;
+box-shadow:
+0 0 20px rgba(57,255,20,.35),
+0 0 60px rgba(57,255,20,.12);
+}
+
+.card h3,
+.priceCard h3{
+margin-bottom:18px;
+color:#39ff14;
+}
+
+.priceCard h1{
+font-size:48px;
+margin:15px 0;
+}
+
+.priceCard span{
+font-size:18px;
+color:#bdbdbd;
+}
+
+.popular{
+border:2px solid #39ff14;
+}
+
+.badge{
+position:absolute;
+top:18px;
+right:18px;
+background:#39ff14;
+color:black;
+padding:6px 12px;
+border-radius:30px;
+font-size:12px;
+font-weight:bold;
+}
+
+/* ---------- WAITLIST ---------- */
+
+#waitlistForm{
+max-width:650px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+#waitlistForm input{
+padding:18px;
+background:#111;
+border:2px solid #222;
+border-radius:12px;
+color:white;
+font-size:16px;
+outline:none;
+transition:.3s;
+}
+
+#waitlistForm input:focus{
+border-color:#39ff14;
+box-shadow:0 0 18px rgba(57,255,20,.4);
+}
+
+#waitlistForm input::placeholder{
+color:#888;
+}
+
+/* ---------- BUTTON ---------- */
+
+.btn{
+background:#39ff14;
+color:black;
+border:none;
+padding:18px;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
+}
+
+.btn:hover{
+box-shadow:0 0 30px #39ff14;
+transform:translateY(-3px);
+}
+
+.btn:active{
+transform:scale(.95);
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:900px){
+
+.sidebar{
+width:75px;
+}
+
+.sidebar h2{
+display:none;
+}
+
+.sidebar a{
+padding:20px 12px;
+font-size:12px;
+text-align:center;
+}
+
+main,
+.section,
+footer{
+margin-left:75px;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+}
+
+<!-- CONTACT -->
+
+<section id="contact" class="section">
+
+<h2>Contact Us</h2>
+
+<p>Have questions? We'd love to hear from you.</p>
+
+<a href="https://wa.me/27626396812" class="btn">
+WhatsApp Us
+</a>
+
+</section>
+
+<!-- FEEDBACK -->
+
+<section id="feedback" class="section">
+
+<h2>Feedback</h2>
+
+<p>Your ideas help shape the future of Replinity.</p>
+
+<form>
+
+<textarea
+placeholder="Tell us what you think..."
+rows="6"
+style="
+width:100%;
+max-width:700px;
+padding:20px;
+background:#111;
+border:2px solid #222;
+border-radius:12px;
+color:white;
+font-size:16px;
+resize:none;
+outline:none;
+"></textarea>
+
+<br><br>
+
+<button class="btn" type="button">
+Send Feedback
+</button>
+
+</form>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div>
+
+<h3 style="color:#39ff14;">Replinity</h3>
+
+<p style="margin-top:10px;color:#888;">
+Never Miss A Customer Again.
+</p>
+
+</div>
+
+<div>
+
+<h3>Founder</h3>
+
+<p style="color:#39ff14;">
+Esona Zepe
+</p>
+
+</div>
+
+<div>
+
+<h3>Sponsors</h3>
+
+<p style="color:#888;">
+Coming Soon
+</p>
+
+</div>
+
+</footer>
+
+<!-- CURSOR GLOW -->
+
+<script>
+
+const cursor=document.querySelector(".cursor");
+
+document.addEventListener("mousemove",(e)=>{
+
+cursor.style.left=e.clientX+"px";
+
+cursor.style.top=e.clientY+"px";
+
+});
+
+/* CLICK SOUND */
+
+const audio=new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=");
+
+document.querySelectorAll("button,a").forEach(item=>{
+
+item.addEventListener("click",()=>{
+
+audio.currentTime=0;
+
+audio.play().catch(()=>{});
+
+});
+
+});
+
+</script>
+
+<script type="module">
+
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabase = createClient(
+    "https://eypckjjsgijqbfcxuaiv.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5cGNrampzZ2lqcWJmY3h1YWl2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4OTAwNzAsImV4cCI6MjEwMTQ2NjA3MH0.PFJziOLIOGqHh2nXl_aF3qp5Gy-3_hcl0RtIW65LIQc"
+);
+
+const form = document.getElementById("waitlistForm");
+const successMessage = document.getElementById("successMessage");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const owner = document.getElementById("owner").value.trim();
+    const business = document.getElementById("business").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    const { error } = await supabase
+        .from("waitlist")
+        .insert([
+            {
+                owner_name: owner,
+                business_name: business,
+                email: email
+            }
+        ]);
+
+    if (error) {
+        alert("Error: " + error.message);
+        console.error(error);
+        return;
+    }
+
+    successMessage.style.display = "block";
+    form.reset();
+});
+
+</script>
+
+</body>
+</html>
