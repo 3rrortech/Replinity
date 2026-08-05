@@ -824,6 +824,19 @@ document.querySelectorAll("section").forEach(section=>{
 observer.observe(section);
 });
 
+  const glow=document.getElementById("cursor-glow");
+
+document.addEventListener("mousemove",(e)=>{
+    glow.style.left=e.clientX+"px";
+    glow.style.top=e.clientY+"px";
+});
+
+document.addEventListener("touchmove",(e)=>{
+    const t=e.touches[0];
+    glow.style.left=t.clientX+"px";
+    glow.style.top=t.clientY+"px";
+});
+  
 </script>
 
   <div id="cursor-glow"></div>
