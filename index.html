@@ -748,10 +748,30 @@ margin-bottom:30px;
 </section>
 
 <script>
-document.getElementById("waitlistForm").addEventListener("submit", function(e){e.preventDefault();
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabaseUrl = "https://eypckjjsgijqbfcxuaiv.supabase.co";
+const supabaseKey = "8817965063:AAHLLHDfBXabypLx7iQyW8J4gy4gcOx09gY";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+document.getElementById("waitlistForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+
+    const { error } = await supabase
+        .from("waitlist")
+        .insert([{ email }]);
+
+    if (error) {
+        alert("Something went wrong. Please try again.");
+        console.error(error);
+        return;
+    }
 
     document.getElementById("successMessage").style.display = "block";
-
     this.reset();
 });
 </script>
