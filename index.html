@@ -161,7 +161,6 @@ box-shadow:0 0 25px #39ff14;
 .btn:active{
 transform:scale(.95);
 }
-</main>
         
 /* Footer */
 
@@ -176,6 +175,23 @@ flex-wrap:wrap;
 color:#888;
 }
 
+        <section class="hero">
+
+<div>
+
+<h1>REPLI<span>NITY</span></h1>
+
+<p>
+Never Miss A Customer Again.
+AI replies instantly to your customers 24/7.
+</p>
+
+<a href="#waitlist" class="btn">Join Waitlist</a>
+
+</div>
+
+    </section>
+        
 </head>
 
 <body>
@@ -202,23 +218,6 @@ REPLI<span>NITY</span>
 </div>
 
 <main>
-
-<section class="hero">
-
-<div>
-
-<h1>REPLI<span>NITY</span></h1>
-
-<p>
-Never Miss A Customer Again.
-AI replies instantly to your customers 24/7.
-</p>
-
-<a href="#waitlist" class="btn">Join Waitlist</a>
-
-</div>
-
-    </section>
 
 <!-- WAITLIST -->
 
@@ -498,7 +497,7 @@ Send Feedback
 </button>
 
 </form>
-
+        
 </section>
 
 <!-- FOOTER -->
@@ -565,8 +564,6 @@ audio.play().catch(()=>{});
 
 });
 
-});
-
 </script>
 
 <script type="module">
@@ -607,6 +604,9 @@ form.addEventListener("submit", async (e) => {
     successMessage.style.display = "block";
     form.reset();
 });
+
+</script>
+        
 <script>
 const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
