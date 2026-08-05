@@ -1,39 +1,797 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Replinity - Never Miss A Customer Again</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; background-image: linear-gradient(rgba(0,255,136,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.05) 1px, transparent 1px); background-size: 50px 50px; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-    .container { text-align: center; padding: 40px 20px; max-width: 800px; }
-    .steps { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; }
-    .step { width: 40px; height: 40px; border: 2px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #666; }
-    .step.active { border-color: #00ff88; color: #00ff88; box-shadow: 0 0 15px #00ff88; }
-    .logo { width: 90px; height: 90px; background: #00ff88; border-radius: 22px; margin: 0 auto 30px; box-shadow: 0 0 40px #00ff88; display: flex; align-items: center; justify-content: center; font-size: 40px; }
-    h1 { font-size: 3em; margin-bottom: 15px; }
-    .subtitle { color: #aaa; font-size: 1.2em; margin-bottom: 40px; }
-    .btn { background: #00ff88; color: #000; padding: 18px 45px; text-decoration: none; border-radius: 14px; font-weight: bold; font-size: 1.1em; box-shadow: 0 0 30px #00ff88; display: inline-block; }
-    .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 60px; }
-    .card { border: 1px solid #00ff88; background: rgba(0,255,136,0.05); padding: 20px; border-radius: 12px; text-align: left; }
-    .card h3 { color: #00ff88; margin-bottom: 8px; }
-    @media(max-width: 600px) { .features { grid-template-columns: 1fr; } h1{font-size:2em;} }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Replinity | AI That Replies So You Don't Have To</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#090909;
+color:white;
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:#111;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+border-bottom:1px solid #222;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#19ff6d;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#19ff6d;
+}
+
+.hero{
+
+padding:170px 8% 120px;
+text-align:center;
+
+background:
+radial-gradient(circle at top,#19ff6d33,#090909 65%);
+}
+
+.hero h1{
+
+font-size:55px;
+margin-bottom:20px;
+line-height:1.1;
+
+}
+
+.hero h1 span{
+color:#19ff6d;
+}
+
+.hero p{
+
+max-width:700px;
+margin:auto;
+font-size:20px;
+line-height:1.7;
+color:#d5d5d5;
+
+}
+
+.buttons{
+
+margin-top:40px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+padding:18px 35px;
+
+margin:10px;
+
+background:#19ff6d;
+
+color:#000;
+
+font-weight:bold;
+
+text-decoration:none;
+
+border-radius:50px;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 0 25px #19ff6d;
+
+}
+
+.btn2{
+
+display:inline-block;
+
+padding:18px 35px;
+
+margin:10px;
+
+border:2px solid #19ff6d;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:50px;
+
+}
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+gap:20px;
+
+padding:70px 8%;
+
+}
+
+.stat{
+
+background:#141414;
+
+padding:35px;
+
+border-radius:18px;
+
+text-align:center;
+
+border:1px solid #222;
+
+}
+
+.stat h2{
+
+color:#19ff6d;
+
+font-size:38px;
+
+margin-bottom:10px;
+
+}
+
+section{
+
+padding:90px 8%;
+
+}
+
+.title{
+
+font-size:40px;
+
+text-align:center;
+
+margin-bottom:60px;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+
+}
+
+.card{
+
+background:#141414;
+
+padding:35px;
+
+border-radius:20px;
+
+border:1px solid #222;
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+border-color:#19ff6d;
+
+}
+
+.card h3{
+
+margin-bottom:15px;
+
+color:#19ff6d;
+
+}
+
+.timeline{
+
+display:grid;
+
+gap:25px;
+
+max-width:700px;
+
+margin:auto;
+
+}
+
+.step{
+
+background:#141414;
+
+padding:25px;
+
+border-left:5px solid #19ff6d;
+
+border-radius:12px;
+
+}
+
+.demo{
+
+text-align:center;
+
+background:#111;
+
+border-radius:20px;
+
+padding:60px 30px;
+
+}
+
+.demo h2{
+
+font-size:38px;
+
+margin-bottom:20px;
+
+}
+
+.demo p{
+
+color:#ccc;
+
+margin-bottom:30px;
+
+}
+
+</style>
+
 </head>
+
 <body>
-  <div class="container">
-    <div class="steps"><div class="step active">1</div><div class="step">2</div><div class="step">3</div><div class="step">4</div></div>
-    <div class="logo">🤖</div>
-    <h1>Welcome to Replinity</h1>
-    <p class="subtitle">Let's get your AI assistant ready in just a few minutes.</p>
-    <a href="https://replinity-chat-flow.base44.app" class="btn">Get Started →</a>
-    <div class="features">
-      <div class="card"><h3>Never Miss A Customer</h3><p>AI replies on WhatsApp in 3 seconds, 24/7</p></div>
-      <div class="card"><h3>Train Your AI</h3><p>Teach it your products, tone & FAQs</p></div>
-      <div class="card"><h3>Track Revenue</h3><p>See messages, customers & sales in one dashboard</p></div>
-      <div class="card"><h3>Built for SA</h3><p>Works with WhatsApp. Speaks like you.</p></div>
-    </div>
-  </div>
+
+<header>
+
+<div class="logo">REPLINITY</div>
+
+<nav>
+
+<a href="#features">Features</a>
+
+<a href="#how">How</a>
+
+<a href="#pricing">Pricing</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Never Miss A <span>Customer</span> Again.
+</h1>
+
+<p>Replinity uses Artificial Intelligence to reply instantly to your customers on WhatsApp, Instagram and Facebook while you focus on growing your business.</p>
+
+<div class="buttons">
+
+<a class="btn"
+href="https://replinity-chat-flow.base44.app"
+target="_blank">🚀 Launch Replinity</a><a class="btn2"href="#features">Learn More</a>
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat">
+<h2>24/7</h2>
+<p>AI Replies</p>
+</div>
+
+<div class="stat">
+<h2>60s</h2>
+<p>Fast Response</p>
+</div>
+
+<div class="stat">
+<h2>3+</h2>
+<p>Languages</p>
+</div>
+
+<div class="stat">
+<h2>100%</h2>
+<p>Never Miss Customers</p>
+</div>
+
+</section>
+
+<section id="features">
+
+<h2 class="title">Why Choose Replinity?</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🤖 AI Assistant</h3>
+<p>Replies instantly day and night.</p>
+</div>
+
+<div class="card">
+<h3>💬 WhatsApp</h3>
+<p>Connect your WhatsApp Business account.</p>
+</div>
+
+<div class="card">
+<h3>📊 Analytics</h3>
+<p>Track conversations and sales.</p>
+</div>
+
+<div class="card">
+<h3>👥 Customer Memory</h3>
+<p>Your AI remembers your customers.</p>
+</div>
+
+<div class="card">
+<h3>🌍 Multi-language</h3>
+<p>Reply in multiple languages.</p>
+</div>
+
+<div class="card">
+<h3>⚡ Easy Setup</h3>
+<p>Get started in only a few minutes.</p>
+</div>
+
+</div>
+
+</section>
+  
+<!-- HERO SECTION -->
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="badge">🚀 AI for South African Businesses
+</div>
+
+<h1>Never Miss A Customer Again.</h1>
+
+<p>Replinity helps your business reply instantly on WhatsApp, Facebook and Instagram—even while you sleep.More replies. More customers. More sales.
+</p>
+
+<div class="hero-buttons">
+<a href="https://replinity-chat-flow.base44.app" class="btn-primary">Get Started Free
+</a>
+
+<a href="#features" class="btn-secondary">See Features</a>
+</div>
+
+<div class="hero-stats">
+
+<div class="stat">
+<h2>24/7</h2>
+<p>AI Replies</p>
+</div>
+
+<div class="stat">
+<h2>60s</h2>
+<p>Average Response</p>
+</div>
+
+<div class="stat">
+<h2>100%</h2>
+<p>Cloud Based</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<div class="phone">
+
+<div class="phone-top">
+<span class="online"></span>Replinity AI
+</div>
+
+<div class="chat">
+
+<div class="message customer">Hi, are you open today?
+</div>
+
+<div class="message ai">👋 Yes! We're open until 6 PM today.How can I help you?
+</div>
+
+<div class="message customer">How much is a haircut?
+</div>
+
+<div class="message ai">Haircuts start from R120 💈Would you like to book now?
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES SECTION -->
+<section id="features" class="features">
+
+<div class="section-title">
+<h2>Why Businesses Choose Replinity</h2>
+<p>Everything you need to automate customer conversations and grow your business.
+</p>
+</div>
+
+<div class="features-grid">
+
+<div class="feature-card">
+<div class="feature-icon">🤖</div>
+<h3>24/7 AI Assistant</h3>
+<p>Your AI answers customers day and night, even while you're asleep.
+</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">💬</div>
+<h3>Instant Replies</h3>
+<p>Reply to WhatsApp, Facebook and Instagram messages in seconds.
+</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">📈</div>
+<h3>More Sales</h3>
+<p>Convert more visitors into paying customers by replying instantly.
+</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">🧠</div>
+<h3>Smart AI Memory</h3>
+<p>Remember returning customers and provide better conversations every time.
+</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">🌍</div>
+<h3>Multiple Languages</h3>
+<p>Support English, isiXhosa, isiZulu and more to reach every customer.
+</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">🔒</div>
+<h3>Secure & Reliable</h3>
+<p>Your business data stays protected with secure cloud technology.
+</p>
+</div>
+
+</div>
+
+</section>
+<!-- FEATURES SECTION -->
+<section id="features" class="features">
+
+<div class="section-title">
+<h2>Why Businesses Choose Replinity</h2>
+<p>Everything you need to automate customer conversations and grow your business.</p>
+</div>
+
+<div class="features-grid">
+
+<div class="feature-card">
+<div class="feature-icon">🤖</div>
+<h3>24/7 AI Assistant</h3>
+<p>Your AI answers customers day and night, even while you're asleep.
+</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">💬</div>
+<h3>Instant Replies</h3>
+<p>Reply to WhatsApp, Facebook and Instagram messages in seconds.
+</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">📈</div>
+<h3>More Sales</h3>
+<p>Convert more visitors into paying customers by replying instantly.
+</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">🧠</div>
+<h3>Smart AI Memory</h3>
+<p>Remember returning customers and provide better conversations every time.
+</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">🌍</div>
+<h3>Multiple Languages</h3>
+<p>Support English, isiXhosa, isiZulu and more to reach every customer.
+</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">🔒</div>
+<h3>Secure & Reliable</h3>
+<p>Your business data stays protected with secure cloud technology.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+
+<div class="section-title">
+<h2>Simple Pricing</h2>
+<p>Start with a FREE 7-day trial. Upgrade anytime.</p>
+</div>
+
+<div class="pricing-grid">
+
+<!-- FREE TRIAL -->
+<div class="price-card">
+
+<h3>Free Trial</h3>
+<h1>7 Days</h1>
+
+<p class="setup">No Payment Required</p>
+
+<ul>
+<li>✅ Full Access</li>
+<li>✅ WhatsApp AI</li>
+<li>✅ Business Setup</li>
+<li>✅ Cancel Anytime</li>
+</ul>
+
+<a href="https://replinity-chat-flow.base44.app" class="btn-primary">Start Free</a>
+
+</div>
+
+<!-- BASIC -->
+<div class="price-card">
+
+<h3>Basic</h3>
+<h1>R300<span>/month</span></h1>
+
+<p class="setup">R300 One-Time Setup</p>
+
+<ul>
+<li>✅ 24/7 AI Replies</li>
+<li>✅ Business Information</li>
+<li>✅ Customer FAQs</li>
+<li>✅ WhatsApp Support</li>
+</ul>
+
+<a href="https://replinity-chat-flow.base44.app" class="btn-primary">Choose Basic</a>
+
+</div>
+
+<!-- GROWTH -->
+<div class="price-card featured">
+
+<div class="popular">MOST POPULAR
+</div>
+
+<h3>Growth</h3>
+<h1>R800<span>/month</span></h1>
+
+<p class="setup">R300 One-Time Setup</p>
+
+<ul>
+<li>✅ Everything in Basic</li>
+<li>✅ Order Taking</li>
+<li>✅ Multiple Languages</li>
+<li>✅ Sales Reports</li>
+<li>✅ Priority Support</li>
+</ul>
+
+<a href="https://replinity-chat-flow.base44.app" class="btn-primary">Choose Growth</a>
+
+</div>
+
+<!-- PRO -->
+<div class="price-card">
+
+<h3>Pro</h3>
+<h1>R1500<span>/month</span></h1>
+
+<p class="setup">R300 One-Time Setup</p>
+
+<ul>
+<li>✅ Everything in Growth</li>
+<li>✅ Customer Memory</li>
+<li>✅ Facebook & Instagram</li>
+<li>✅ Advanced Automation</li>
+<li>✅ Premium Support</li>
+</ul>
+
+<a href="https://replinity-chat-flow.base44.app" class="btn-primary">Choose Pro
+</a>
+
+</div>
+
+<!-- ULTRA PRO -->
+<div class="price-card">
+
+<div class="popular">COMING SOON
+</div>
+
+<h3>Ultra Pro</h3>
+<h1>Coming Soon</h1>
+
+<ul>
+<li>🚀 AI Phone Call Assistant</li>
+<li>🚀 Voice Booking</li>
+<li>🚀 Smart Business Analytics</li>
+<li>🚀 Advanced AI Features</li>
+<li>🚀 And Much More...</li>
+</ul>
+
+<button class="btn-secondary">Coming Soon</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+
+<div class="about-content">
+
+<h2>Built for South African Businesses 🇿🇦</h2>
+
+<p>Replinity is an AI assistant that helps businesses reply to customers instantly on WhatsApp and other messaging platforms. Whether you own a salon, spaza shop, car wash, restaurant, clinic or small business, Replinity helps you stay available 24/7 without hiring extra staff.</p>
+
+<div class="about-grid">
+
+<div>
+<h3>⚡ Fast Replies</h3>
+<p>Answer customers in seconds.</p>
+</div>
+
+<div>
+<h3>💬 Never Miss a Customer</h3>
+<p>Your AI is always online.</p>
+</div>
+
+<div>
+<h3>📈 Grow Your Business</h3>
+<p>Turn conversations into sales.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CALL TO ACTION -->
+
+<section class="cta">
+
+<h2>Ready to Never Miss a Customer Again?</h2>
+
+<p>Start your FREE 7-day trial and let Replinity work for your business 24 hours a day.</p>
+
+<a href="https://replinity-chat-flow.base44.app" class="btn-primary">Start Free Today →</a>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+<div class="footer-logo">
+<h2>Replinity</h2>
+<p>AI That Replies, So You Don't Have To.</p>
+</div>
+
+<div class="footer-links">
+<a href="#">Home</a>
+<a href="#features">Features</a>
+<a href="#pricing">Pricing</a>
+<a href="https://replinity-chat-flow.base44.app">App</a>
+</div>
+
+<div class="footer-contact">
+<p>🌍 replinity.co.za</p>
+<p>📧 replinity@gmail.com</p>
+<p>🇿🇦 Proudly Built in South Africa</p>
+</div>
+
+<hr>
+
+<p class="copyright">© 2026 Replinity. All Rights Reserved.</p>
+
+</footer>
+
+<script>
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener("click", function(e){
+e.preventDefault();
+document.querySelector(this.getAttribute("href")).scrollIntoView({
+behavior:"smooth"
+});
+});
+});
+
+// Navbar shadow while scrolling
+window.addEventListener("scroll", () => {
+const nav = document.querySelector("header");
+
+if(window.scrollY > 50){
+nav.classList.add("scrolled");
+}else{
+nav.classList.remove("scrolled");
+}
+});
+
+// Fade-in animation
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+document.querySelectorAll("section").forEach(section=>{
+observer.observe(section);
+});
+
+</script>
+
 </body>
 </html>
