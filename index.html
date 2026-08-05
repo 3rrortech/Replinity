@@ -380,150 +380,83 @@ Everything your business needs to respond to customers automatically.
 
 </section>
 
-/* ---------- PRICING ---------- */
-
 <section id="pricing" class="section">
 
 <h2>Pricing</h2>
 
+<p>Simple pricing for every business size.</p>
+
 <div class="cards">
 
 <div class="priceCard">
-
 <h3>Starter</h3>
-
 <h1>R800</h1>
-
 <span>Setup</span>
-
 <p>R300/month</p>
-
-</div>
-
-<div class="priceCard popular">
-
-<div class="badge">Popular</div>
-
-<h3>Growth</h3>
-
-<h1>R1500</h1>
-
-<span>Setup</span>
-
-<p>R500/month</p>
-
 </div>
 
 <div class="priceCard">
-
-<h3>Pro</h3>
-
-<h1>R2500</h1>
-
+<div class="badge">Popular</div>
+<h3>Growth</h3>
+<h1>R1500</h1>
 <span>Setup</span>
+<p>R500/month</p>
+</div>
 
+<div class="priceCard">
+<h3>Pro</h3>
+<h1>R2500</h1>
+<span>Setup</span>
 <p>R600/month</p>
+</div>
 
 </div>
-    
-  /* ---------- WAITLIST ---------- */
 
-#waitlistForm{
-max-width:650px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:18px;
-}
+</section>
 
-#waitlistForm input{
-padding:18px;
-background:#111;
-border:2px solid #222;
-border-radius:12px;
-color:white;
-font-size:16px;
-outline:none;
-transition:.3s;
-}
+<section id="waitlist" class="section">
 
-#waitlistForm input:focus{
-border-color:#39ff14;
-box-shadow:0 0 18px rgba(57,255,20,.4);
-}
+<h2>Join The Replinity Waitlist</h2>
 
-#waitlistForm input::placeholder{
-color:#888;
-}
+<p>
+Be among the first businesses to experience AI-powered customer replies.
+</p>
 
-   /* ---------- BUTTON ---------- */
+<form id="waitlistForm">
 
-.btn{
-background:#39ff14;
-color:black;
-border:none;
-padding:18px;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-transition:.25s;
-}
+<input
+type="text"
+id="owner"
+placeholder="Your Name"
+required>
 
-.btn:hover{
-box-shadow:0 0 30px #39ff14;
-transform:translateY(-3px);
-}
+<input
+type="text"
+id="business"
+placeholder="Business Name"
+required>
 
-.btn:active{
-transform:scale(.95);
-}
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required>
 
-/* ---------- MOBILE ---------- */
-        
-.menuBtn{
-display:block;
-position:fixed;
-top:20px;
-left:20px;
-z-index:1001;
-background:#39ff14;
-color:#000;
-border:none;
-padding:12px 16px;
-border-radius:10px;
-cursor:pointer;
-}
+<button type="submit" class="btn">
+Join Waitlist
+</button>
 
-.sidebar{
-left:-230px;
-width:230px;
-transition:.3s;
-}
+</form>
 
-.sidebar.collapsed{
-left:0;
-}
+<p
+id="successMessage"
+style="display:none;color:#39ff14;margin-top:20px;font-size:18px;">
+✅ Welcome to the Replinity Waitlist! We'll contact you before launch.
+</p>
 
-main,
-.section,
-footer{
-margin-left:0;
-}
+    </section>
 
-.hero h1{
-font-size:48px;
-}
-
-@media (max-width:900px){
-}
-.hero h1{
-    font-size:48px;
-}
-
-<!-- CONTACT -->
-
-<section id="contact" class="section">
+    <section id="contact" class="section">
 
 <h2>Contact Us</h2>
 
@@ -535,106 +468,75 @@ WhatsApp Us
 
 </section>
 
-<!-- FEEDBACK -->
-
 <section id="feedback" class="section">
 
 <h2>Feedback</h2>
 
 <p>Your ideas help shape the future of Replinity.</p>
 
-<form>
+<form id="feedbackForm">
 
 <textarea
+id="feedback"
 placeholder="Tell us what you think..."
 rows="6"
-style="
-width:100%;
-max-width:700px;
-padding:20px;
-background:#111;
-border:2px solid #222;
-border-radius:12px;
-color:white;
-font-size:16px;
-resize:none;
-outline:none;
-"></textarea>
+required></textarea>
 
-<br><br>
+<br>
 
-<button class="btn" type="button">
+<button type="submit" class="btn">
 Send Feedback
 </button>
 
 </form>
-        
+
 </section>
 
-<!-- FOOTER -->
+</main>
 
 <footer>
 
 <div>
-
 <h3 style="color:#39ff14;">Replinity</h3>
-
 <p style="margin-top:10px;color:#888;">
 Never Miss A Customer Again.
 </p>
-
 </div>
 
 <div>
-
 <h3>Founder</h3>
-
 <p style="color:#39ff14;">
 Esona Zepe
 </p>
-
 </div>
 
 <div>
-
 <h3>Sponsors</h3>
-
 <p style="color:#888;">
-None
+None Yet
 </p>
-
 </div>
 
 </footer>
 
-<!-- CURSOR GLOW -->
-
 <script>
+const cursor = document.querySelector(".cursor");
 
-const cursor=document.querySelector(".cursor");
-
-document.addEventListener("mousemove",(e)=>{
-
-cursor.style.left=e.clientX+"px";
-
-cursor.style.top=e.clientY+"px";
-
+document.addEventListener("mousemove", (e) => {
+    if(cursor){
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+    }
 });
 
-/* CLICK SOUND */
-
-const audio=new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=");
+const audio = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=");
 
 document.querySelectorAll("button,a").forEach(item=>{
-
-item.addEventListener("click",()=>{
-
-audio.currentTime=0;
-
-audio.play().catch(()=>{});
-
+    item.addEventListener("click",()=>{
+        audio.currentTime=0;
+        audio.play().catch(()=>{});
+    });
 });
-
 </script>
 
 <script type="module">
@@ -642,50 +544,47 @@ audio.play().catch(()=>{});
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
 const supabase = createClient(
-    "https://eypckjjsgijqbfcxuaiv.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5cGNrampzZ2lqcWJmY3h1YWl2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4OTAwNzAsImV4cCI6MjEwMTQ2NjA3MH0.PFJziOLIOGqHh2nXl_aF3qp5Gy-3_hcl0RtIW65LIQc"
+"https://eypckjjsgijqbfcxuaiv.supabase.co",
+"YOUR_ANON_KEY"
 );
 
 const form = document.getElementById("waitlistForm");
 const successMessage = document.getElementById("successMessage");
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+form.addEventListener("submit", async (e)=>{
 
-    const owner = document.getElementById("owner").value.trim();
-    const business = document.getElementById("business").value.trim();
-    const email = document.getElementById("email").value.trim();
+e.preventDefault();
 
-    const { error } = await supabase
-        .from("waitlist")
-        .insert([
-            {
-                owner_name: owner,
-                business_name: business,
-                email: email
-            }
-        ]);
+const owner=document.getElementById("owner").value.trim();
+const business=document.getElementById("business").value.trim();
+const email=document.getElementById("email").value.trim();
 
-    if (error) {
-        alert("Error: " + error.message);
-        console.error(error);
-        return;
-    }
+const { error } = await supabase
+.from("waitlist")
+.insert([{
+owner_name:owner,
+business_name:business,
+email:email
+}]);
 
-    successMessage.style.display = "block";
-    form.reset();
+if(error){
+alert(error.message);
+return;
+}
+
+successMessage.style.display="block";
+form.reset();
+
+});
+
+const menuBtn=document.getElementById("menuBtn");
+const sidebar=document.getElementById("sidebar");
+
+menuBtn.addEventListener("click",()=>{
+sidebar.classList.toggle("collapsed");
 });
 
 </script>
-        
-<script>
-const menuBtn = document.getElementById("menuBtn");
-const sidebar = document.getElementById("sidebar");
 
-menuBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("collapsed");
-});
-</script>
-    
 </body>
 </html>
