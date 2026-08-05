@@ -60,11 +60,11 @@ color:#39ff14;
 text-shadow:0 0 30px #39ff14;
 }
 
-/* Sidebar */
-
-<button id="menuBtn" class="menuBtn">
+    <button id="menuBtn" class="menuBtn">
 ☰
 </button>
+    
+/* Sidebar */
 
 .sidebar{
 position:fixed;
@@ -600,15 +600,14 @@ form.addEventListener("submit", async (e) => {
     successMessage.style.display = "block";
     form.reset();
 });
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
 
-</script>
-
-const menuBtn=document.getElementById("menuBtn");
-const sidebar=document.getElementById("sidebar");
-
-menuBtn.addEventListener("click",()=>{
+menuBtn.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
 });
+</script>
     
 </body>
 </html>
