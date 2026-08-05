@@ -703,22 +703,20 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 document.getElementById("waitlistForm").addEventListener("submit", async function (e) {e.preventDefault();
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const business_name = document.getElementById("business_name").value;
 
-    const email = document.getElementById("email").value;
-
-    const { error } = await supabase
-        .from("waitlist")
-        .insert([{ email }]);
-
-    if (error) {alert("Something went wrong. Please try again.");
-        console.error(error);
-        return;
-    }
-
-    document.getElementById("successMessage").style.display = "block";
-    this.reset();
-});
-   
+const { error } = await supabase
+.from("waitlist")
+.insert([
+{
+name,
+email,
+business_name
+}
+]);
+                                                                                          
 </script>
     
 </section>
