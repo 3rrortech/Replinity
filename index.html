@@ -60,10 +60,6 @@ color:#39ff14;
 text-shadow:0 0 30px #39ff14;
 }
 
-    <button id="menuBtn" class="menuBtn">
-☰
-</button>
-    
 /* Sidebar */
 
 .sidebar{
@@ -183,6 +179,10 @@ color:#888;
 
 <body>
 
+        <button id="menuBtn" class="menuBtn">
+☰
+</button>
+
 <div class="cursor"></div>
 
 <div class="backgroundLogo">
@@ -217,7 +217,10 @@ AI replies instantly to your customers 24/7.
 
 </div>
 
-</section>
+
+<style>
+
+    </section>
 
 <!-- WAITLIST -->
 
@@ -256,8 +259,6 @@ required>
 </p>
 
 </section>
-
-<style>
 
 /* ---------- SECTION ---------- */
 
@@ -309,8 +310,6 @@ margin-bottom:50px;
 </div>
 
 </section>
-
-    }
 
     /* ---------- PRICING ---------- */
 
@@ -416,40 +415,26 @@ transform:scale(.95);
 
 /* ---------- MOBILE ---------- */
 
-@media(max-width:900px){
-    }
-.sidebar{
-width:75px;
-}
+@media (max-width:900px){
 
-.sidebar h2{
-display:none;
-}
-
-.sidebar a{
-padding:20px 12px;
-font-size:12px;
-text-align:center;
-}
-
-main,
-.section,
-footer{
-margin-left:75px;
-}
-
-.hero h1{
-font-size:48px;
-}
-
-    .menuBtn{
+.menuBtn{
 display:block;
+position:fixed;
+top:20px;
+left:20px;
+z-index:1001;
+background:#39ff14;
+color:#000;
+border:none;
+padding:12px 16px;
+border-radius:10px;
+cursor:pointer;
 }
 
 .sidebar{
 left:-230px;
-transition:.3s;
 width:230px;
+transition:.3s;
 }
 
 .sidebar.collapsed{
@@ -460,7 +445,12 @@ main,
 .section,
 footer{
 margin-left:0;
-    }
+}
+
+.hero h1{
+font-size:48px;
+}
+
 <!-- CONTACT -->
 
 <section id="contact" class="section">
