@@ -6,314 +6,123 @@
 
 <title>Replinity | Never Miss A Customer Again</title>
 
-<style>
+<style>:root{
+    --bg:#050505;
+    --card:rgba(255,255,255,.05);
+    --border:rgba(255,255,255,.08);
+    --green:#00ff88;
+    --greenGlow:rgba(0,255,136,.45);
+    --text:#ffffff;
+    --muted:#a8a8a8;
+}
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-scroll-behavior:smooth;
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-background:#090909;
-color:white;
+    font-family:'Inter',sans-serif;
+    background:
+        radial-gradient(circle at top,#113d26 0%,#050505 40%),
+        #050505;
+    color:var(--text);
+    overflow-x:hidden;
 }
 
-header{
-position:fixed;
-top:0;
-width:100%;
-background:#111;
-padding:18px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:999;
-border-bottom:1px solid #222;
+h1,h2,h3,.logo{
+    font-family:'Orbitron',sans-serif;
+    letter-spacing:2px;
 }
 
 .logo{
-font-size:28px;
-font-weight:bold;
-color:#19ff6d;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-weight:bold;
-transition:.3s;
-}
-
-nav a:hover{
-color:#19ff6d;
+    color:#fff;
+    text-shadow:
+    0 0 10px #00ff88,
+    0 0 25px #00ff88;
 }
 
 .hero{
-
-padding:170px 8% 120px;
-text-align:center;
-
-background:
-radial-gradient(circle at top,#19ff6d33,#090909 65%);
+    padding:120px 20px;
+    text-align:center;
 }
 
 .hero h1{
-
-font-size:55px;
-margin-bottom:20px;
-line-height:1.1;
-
-}
-
-.hero h1 span{
-color:#19ff6d;
+    font-size:clamp(2.7rem,7vw,5rem);
+    line-height:1.1;
 }
 
 .hero p{
-
-max-width:700px;
-margin:auto;
-font-size:20px;
-line-height:1.7;
-color:#d5d5d5;
-
-}
-
-.buttons{
-
-margin-top:40px;
-
-}
-
-.btn{
-
-display:inline-block;
-
-padding:18px 35px;
-
-margin:10px;
-
-background:#19ff6d;
-
-color:#000;
-
-font-weight:bold;
-
-text-decoration:none;
-
-border-radius:50px;
-
-transition:.3s;
-
-}
-
-.btn:hover{
-
-transform:translateY(-4px);
-
-box-shadow:0 0 25px #19ff6d;
-
-}
-
-.btn2{
-
-display:inline-block;
-
-padding:18px 35px;
-
-margin:10px;
-
-border:2px solid #19ff6d;
-
-color:white;
-
-text-decoration:none;
-
-border-radius:50px;
-
-}
-
-.stats{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-
-gap:20px;
-
-padding:70px 8%;
-
-}
-
-.stat{
-
-background:#141414;
-
-padding:35px;
-
-border-radius:18px;
-
-text-align:center;
-
-border:1px solid #222;
-
-}
-
-.stat h2{
-
-color:#19ff6d;
-
-font-size:38px;
-
-margin-bottom:10px;
-
-}
-
-section{
-
-padding:90px 8%;
-
-}
-
-.title{
-
-font-size:40px;
-
-text-align:center;
-
-margin-bottom:60px;
-
-}
-
-.cards{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:25px;
-
+    color:var(--muted);
+    max-width:700px;
+    margin:25px auto;
+    font-size:1.15rem;
 }
 
 .card{
-
-background:#141414;
-
-padding:35px;
-
-border-radius:20px;
-
-border:1px solid #222;
-
-transition:.3s;
-
+    background:var(--card);
+    border:1px solid var(--border);
+    backdrop-filter:blur(18px);
+    border-radius:24px;
+    padding:30px;
+    transition:.35s;
 }
 
 .card:hover{
-
-transform:translateY(-8px);
-
-border-color:#19ff6d;
-
+    transform:translateY(-8px);
+    border-color:var(--green);
+    box-shadow:0 0 40px rgba(0,255,136,.18);
 }
 
-.card h3{
-
-margin-bottom:15px;
-
-color:#19ff6d;
-
-}
-
-.timeline{
-
-display:grid;
-
-gap:25px;
-
-max-width:700px;
-
-margin:auto;
-
-}
-
-.step{
-
-background:#141414;
-
-padding:25px;
-
-border-left:5px solid #19ff6d;
-
-border-radius:12px;
-
-}
-
-.demo{
-
-text-align:center;
-
-background:#111;
-
-border-radius:20px;
-
-padding:60px 30px;
-
-}
-
-.demo h2{
-
-font-size:38px;
-
-margin-bottom:20px;
-
-}
-
-.demo p{
-
-color:#ccc;
-
-margin-bottom:30px;
-
-}
-
-  .logo{
-    color:#fff;
-    font-size:2rem;
-    font-weight:800;
-    letter-spacing:1px;
-}
-
-.logo span{
-    color:#39ff14;
-    text-shadow:
-        0 0 10px #39ff14,
-        0 0 20px #39ff14,
-        0 0 40px #39ff14;
-}
-
-  button,
-.btn{
-    transition:all .3s ease;
-}
-
-button:hover,
-.btn:hover,
-button:active,
-.btn:active{
-    background:#39ff14;
+button,.btn{
+    background:linear-gradient(90deg,#00ff88,#00cc6a);
     color:#000;
-    box-shadow:
-        0 0 15px #39ff14,
-        0 0 30px #39ff14,
-        0 0 60px #39ff14;
-  }
+    border:none;
+    padding:16px 34px;
+    border-radius:999px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(0,255,136,.35);
+}
 
-  
+button:hover,.btn:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 0 45px rgba(0,255,136,.7);
+}
+
+section{
+    padding:90px 20px;
+}
+
+.glow{
+    position:fixed;
+    width:350px;
+    height:350px;
+    background:#00ff88;
+    border-radius:50%;
+    filter:blur(180px);
+    opacity:.12;
+    pointer-events:none;
+    animation:floatGlow 10s ease-in-out infinite;
+}
+
+@keyframes floatGlow{
+    0%{transform:translate(-80px,-40px);}
+    50%{transform:translate(120px,80px);}
+    100%{transform:translate(-80px,-40px);}
+}
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00ff88;
+    border-radius:20px;
+}
+
 </style>
 
 </head>
