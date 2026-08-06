@@ -939,14 +939,13 @@ feedbackForm.addEventListener("submit", async (e) => {
             return;
         }
 
-        const { data, error } = await supabase
+        const { error } = await supabase
             .from("feedback")
             .insert([
                 {
                     feedback: feedbackText
                 }
             ])
-            .select();
 
         if (error) {
             alert("Supabase Error: " + error.message);
