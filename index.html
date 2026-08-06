@@ -925,22 +925,31 @@ form.reset();
 
 });
 
-const { error } = await supabase
-  .from("public.feedback")
-  .insert([
-    {
-      name: name,
-      business_name: businessName,
-      rating: rating,
-      feedback: feedback
-    }
-  ]);
+const feedbackForm = document.getElementById("feedbackForm");
 
-if (error) {
-  alert("Failed to submit feedback.");
-} else {
-  alert("Thank you for your feedback!");
+feedbackForm.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const feedback = document.getElementById("feedback").value.trim();
+
+    const { error } = await supabase
+        .from("feedback")
+        .insert([
+            {
+                feedback: feedback
+            }
+        ]);
+
+    if (error) {
+        alert("Failed to submit feedback.");
+        return;
     }
+
+    alert("✅ Thank you for your feedback!");
+    feedbackForm.reset();
+
+});
 
 const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
