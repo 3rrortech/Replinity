@@ -73,15 +73,15 @@ cursor:pointer;
 
 .sidebar{
 position:fixed;
-top:0;
+top:80px;              /* Start below the header */
 left:-280px;
 width:280px;
-height:100%;
+height:calc(100vh - 80px);
 background:#050505;
 border-right:1px solid #1a1a1a;
-padding:120px 30px 40px; /* pushes menu below the logo */
+padding:30px;
 transition:0.4s ease;
-z-index:999;
+z-index:997;           /* Lower than the header */
 overflow-y:auto;
 }
 
@@ -306,7 +306,13 @@ box-shadow:0 0 15px #39ff14;
 .sidebar-logo{
 display:flex;
 justify-content:center;
+margin-bottom:20px;
+}
+
+.sidebar h2{
+text-align:center;
 margin-bottom:30px;
+font-size:30px;
 }
 
 .sidebar-logo img{
@@ -534,7 +540,7 @@ Everything your business needs to respond to customers automatically.
 <h3>Analytics</h3>
 <p>Track conversations and customer activity.</p>
 </div>
-
+</div>
 </section>
 
 <section id="pricing" class="section">
