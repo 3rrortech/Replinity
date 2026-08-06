@@ -298,11 +298,6 @@ font-size:48px;
 padding:80px 25px;
 }
 
-.sidebar{
-    left:-280px;
-    transition:0.3s;
-}
-
 main,
 .section,
 footer{
@@ -787,17 +782,20 @@ form.reset();
 
 });
 
-const menuBtn=document.getElementById("menuBtn");
-const sidebar=document.getElementById("sidebar");
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
 
 menuBtn.addEventListener("click", () => {
     sidebar.classList.toggle("active");
 });
-    document.querySelectorAll(".sidebar a").forEach(link=>{
-    link.addEventListener("click",()=>{
-        
+
+document.querySelectorAll(".sidebar a").forEach(link => {
+    link.addEventListener("click", () => {
         sidebar.classList.remove("active");
     });
+});
+
+
 
 </script>
 
