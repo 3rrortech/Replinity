@@ -341,7 +341,7 @@ padding:0 20px;
 }
 
 .sidebar{
-    left:-280px;
+    left:0;
 }
 
 .sidebar.active{
@@ -915,27 +915,12 @@ form.reset();
 });
 
 const menuBtn = document.getElementById("menuBtn");
-const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
-
+    
 menuBtn.addEventListener("click", () => {
-
     sidebar.classList.toggle("active");
-
-    if (window.innerWidth > 900) {
-
-        if (sidebar.classList.contains("active")) {
-            main.style.marginLeft = "280px";
-            footer.style.marginLeft = "280px";
-        } else {
-            main.style.marginLeft = "0";
-            footer.style.marginLeft = "0";
-        }
-
-    }
-
 });
 
 </script>
