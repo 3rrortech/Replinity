@@ -359,15 +359,18 @@ font-size:26px;
 
 main{
     margin-left:0;
+    transition:.4s;
 }
 
 .section{
     margin-left:0;
+    transition:.4s;
 }
 
 footer{
     margin-left:0;
-}
+    transition:.4s;
+    }
 
 .hero{
 padding:120px 25px 60px;
@@ -528,16 +531,18 @@ padding:80px 25px;
 </head>
     
 <body>
-    
-<header class="topHeader">
-        
-<button id="menuBtn" class="menuBtn">
-☰
-</button>
+    <header class="topHeader">
 
-<div class="topLine"></div>
+    <div class="brand">
+        <h1>REPLI<span>NITY</span></h1>
+        <img src="logo.png" class="header-logo" alt="Replinity Logo">
+    </div>
 
-</header>
+    <button id="menuBtn" class="menuBtn">☰</button>
+
+    <div class="topLine"></div>
+
+    </header>
     
 <div class="cursor"></div>
 
@@ -910,10 +915,27 @@ form.reset();
 });
 
 const menuBtn = document.getElementById("menuBtn");
+const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
+const main = document.querySelector("main");
+const footer = document.querySelector("footer");
 
 menuBtn.addEventListener("click", () => {
+
     sidebar.classList.toggle("active");
+
+    if (window.innerWidth > 900) {
+
+        if (sidebar.classList.contains("active")) {
+            main.style.marginLeft = "280px";
+            footer.style.marginLeft = "280px";
+        } else {
+            main.style.marginLeft = "0";
+            footer.style.marginLeft = "0";
+        }
+
+    }
+
 });
 
 </script>
