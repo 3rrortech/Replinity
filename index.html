@@ -259,6 +259,12 @@ top:0;
 left:230px;
 right:0;
 height:80px;
+background:#070707;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 35px;
+border-bottom:1px solid #1a1a1a;
 z-index:1000;
 }
 
@@ -317,11 +323,55 @@ object-fit:contain;
     
 @media (max-width:900px){
 
-.topHeader{
-left:0;
-z-index:1000;
+.menuBtn{
+display:block;
 }
 
+.topHeader{
+left:0;
+padding:0 20px;
+}
+
+.sidebar{
+top:80px;
+left:-280px;
+height:calc(100vh - 80px);
+z-index:999;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.brand img{
+width:44px;
+height:44px;
+}
+
+.brand h1{
+font-size:26px;
+}
+
+main,
+.section,
+footer{
+margin-left:0;
+}
+
+.hero{
+padding:120px 25px 60px;
+text-align:center;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.section{
+padding:80px 25px;
+}
+
+}
 .sidebar{
 top:80px;
 height:calc(100vh - 80px);
@@ -358,8 +408,30 @@ footer{
 margin-left:0;
 }
 
+.hero{
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+min-height:100vh;
+padding:120px 30px 60px;
+}
+
 .hero h1{
-font-size:48px;
+font-size:72px;
+margin-bottom:20px;
+}
+
+.hero h1 span{
+color:#39ff14;
+text-shadow:0 0 20px #39ff14;
+}
+
+.hero p{
+font-size:20px;
+color:#bdbdbd;
+max-width:700px;
+margin:0 auto;
 }
 
 .section{
@@ -616,7 +688,7 @@ Join Waitlist
 <p
 id="successMessage"
 style="display:none;color:#39ff14;margin-top:20px;font-size:18px;">
-✅ Welcome to the Replinity Waitlist, Thank you fot joining! We'll keep you updated abou the launch.
+✅ Welcome to the Replinity Waitlist, Thank you for joining! We'll keep you updated abou the launch.
 </p>
 
     </section>
