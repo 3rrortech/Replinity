@@ -928,27 +928,31 @@ form.reset();
 const feedbackForm = document.getElementById("feedbackForm");
 
 feedbackForm.addEventListener("submit", async (e) => {
-
     e.preventDefault();
 
-    const feedback = document.getElementById("feedback").value.trim();
-    console.log("Feedback form found:", feedbackForm);
+    const feedbackText = document.getElementById("feedback").value.trim();
+
+    if (!feedbackText) {
+        alert("Please enter your feedback.");
+        return;
+    }
+
     const { error } = await supabase
         .from("feedback")
         .insert([
             {
-                feedback: feedback
+                feedback: feedbackText
             }
         ]);
 
     if (error) {
-        alert("Failed to submit feedback.");
+        console.error(error);
+        alert(error.message);
         return;
     }
 
     alert("✅ Thank you for your feedback!");
     feedbackForm.reset();
-
 });
 
 const menuBtn = document.getElementById("menuBtn");
