@@ -103,7 +103,7 @@ transition:.3s;
 }
 
 .sidebar.active{
-left:0;
+    left:0;
 }
     
 .sidebar a:hover{
@@ -341,14 +341,11 @@ padding:0 20px;
 }
 
 .sidebar{
-top:80px;
-left:-280px;
-height:calc(100vh - 80px);
-z-index:998;
+    left:-280px;
 }
 
 .sidebar.active{
-left:0;
+    left:0;
 }
 
 .brand img{
@@ -360,10 +357,16 @@ height:44px;
 font-size:26px;
 }
 
-main,
-.section,
+main{
+    margin-left:0;
+}
+
+.section{
+    margin-left:0;
+}
+
 footer{
-margin-left:0;
+    margin-left:0;
 }
 
 .hero{
@@ -382,7 +385,7 @@ padding:80px 25px;
 .sidebar{
 top:80px;
 height:calc(100vh - 80px);
-z-index:999;
+z-index:998;
 }
 
 .sidebar{
@@ -911,12 +914,6 @@ const sidebar = document.getElementById("sidebar");
 
 menuBtn.addEventListener("click", () => {
     sidebar.classList.toggle("active");
-});
-
-document.querySelectorAll(".sidebar a").forEach(link => {
-    link.addEventListener("click", () => {
-        sidebar.classList.remove("active");
-    });
 });
 
 </script>
