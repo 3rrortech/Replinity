@@ -256,6 +256,70 @@ flex-wrap:wrap;
 gap:30px;
 color:#888;
 }
+
+/* ===== TOP HEADER ===== */
+
+.topHeader{
+position:fixed;
+top:0;
+left:230px;
+right:0;
+height:80px;
+background:#070707;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 35px;
+border-bottom:1px solid #1a1a1a;
+z-index:998;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.brand img{
+width:55px;
+height:55px;
+object-fit:contain;
+}
+
+.brand h1{
+font-size:34px;
+font-weight:900;
+color:#fff;
+}
+
+.brand h1 span{
+color:#39ff14;
+text-shadow:0 0 15px #39ff14;
+}
+
+.topLine{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+height:2px;
+background:#39ff14;
+box-shadow:0 0 15px #39ff14;
+}
+
+/* Sidebar logo */
+
+.sidebar-logo{
+display:flex;
+justify-content:center;
+margin-bottom:30px;
+}
+
+.sidebar-logo img{
+width:90px;
+height:90px;
+object-fit:contain;
+}
     
 @media (max-width:900px){
 
@@ -423,10 +487,11 @@ REPLI<span>NITY</span>
 </div>
     
 <div id="sidebar" class="sidebar">
-<h2>REPLI<span>NITY</span></h2>
 <div class="sidebar-logo">
   <img src="logo.png" alt="Replinity Logo">
 </div>
+    
+<h2>REPLI<span>NITY</span></h2>
 
 <a href="#">Home</a>
 <a href="#features">Features</a>
