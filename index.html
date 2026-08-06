@@ -341,13 +341,14 @@ padding:0 20px;
 }
 
 .sidebar{
-    left:0;
+    left:-280px;
+    transition:0.4s ease;
 }
 
 .sidebar.active{
     left:0;
 }
-
+    
 .brand img{
 width:44px;
 height:44px;
@@ -918,9 +919,25 @@ const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
-    
+
 menuBtn.addEventListener("click", () => {
     sidebar.classList.toggle("active");
+});
+
+document.querySelectorAll(".sidebar a").forEach(link => {
+    link.addEventListener("click", () => {
+        sidebar.classList.remove("active");
+    });
+});
+
+document.addEventListener("click", (e) => {
+    if (
+        sidebar.classList.contains("active") &&
+        !sidebar.contains(e.target) &&
+        !menuBtn.contains(e.target)
+    ) {
+        sidebar.classList.remove("active");
+    }
 });
 
 </script>
