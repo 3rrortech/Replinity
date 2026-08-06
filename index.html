@@ -925,6 +925,23 @@ form.reset();
 
 });
 
+const { error } = await supabase
+  .from("public.feedback")
+  .insert([
+    {
+      name: name,
+      business_name: businessName,
+      rating: rating,
+      feedback: feedback
+    }
+  ]);
+
+if (error) {
+  alert("Failed to submit feedback.");
+} else {
+  alert("Thank you for your feedback!");
+    }
+
 const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 const main = document.querySelector("main");
