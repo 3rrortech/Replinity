@@ -932,7 +932,7 @@ feedbackForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const feedback = document.getElementById("feedback").value.trim();
-
+    console.log("Feedback form found:", feedbackForm);
     const { error } = await supabase
         .from("feedback")
         .insert([
