@@ -563,7 +563,7 @@ Join Waitlist
 <p
 id="successMessage"
 style="display:none;color:#39ff14;margin-top:20px;font-size:18px;">
-✅ Welcome to the Replinity Waitlist! We'll contact you before launch.
+✅ Welcome to the Replinity Waitlist, Thank you fot joining! We'll keep you updated abou the launch.
 </p>
 
     </section>
@@ -793,6 +793,11 @@ const sidebar=document.getElementById("sidebar");
 menuBtn.addEventListener("click", () => {
     sidebar.classList.toggle("active");
 });
+    document.querySelectorAll(".sidebar a").forEach(link=>{
+    link.addEventListener("click",()=>{
+        
+        sidebar.classList.remove("active");
+    });
 
 </script>
 
