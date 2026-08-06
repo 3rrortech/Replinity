@@ -254,19 +254,33 @@ color:#888;
 /* ===== TOP HEADER ===== */
 
 .topHeader{
-position:fixed;
-top:0;
-left:230px;
-right:0;
-height:80px;
-background:#070707;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 35px;
-border-bottom:1px solid #1a1a1a;
-z-index:1000;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:80px;
+    background:#070707;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    border-bottom:1px solid #1a1a1a;
+    z-index:1000;
 }
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex:1;
+}
+
+.header-logo{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    margin-left:auto; /* Pushes the logo to the far right */
+    }
 
 .brand{
     display:flex;
@@ -529,15 +543,10 @@ padding:80px 25px;
     <header class="topHeader">
 
 <div class="brand">
-
-    <img src="logo.png" alt="Replinity Logo" class="header-logo">
-
     <h1>REPLI<span>NITY</span></h1>
-
+    <img src="logo.png" alt="Replinity Logo" class="header-logo">
 </div>
-
-<h1>
-
+        
 <button id="menuBtn" class="menuBtn">
 ☰
 </button>
