@@ -272,10 +272,23 @@ color:#888;
 }
 
 @media(max-width:900px){
-
-.menuBtn{
-display:block;
 }
+    
+    .menuBtn{
+display:none;
+position:fixed;
+top:20px;
+left:20px;
+z-index:1001;
+background:#39ff14;
+color:#000;
+border:none;
+padding:12px 16px;
+border-radius:12px;
+font-size:22px;
+cursor:pointer;
+box-shadow:0 0 20px #39ff14;
+    }
 
 .sidebar{
     left:-280px;
@@ -432,9 +445,8 @@ Everything your business needs to respond to customers automatically.
 </p>
 
 <div class="cards">
-
 </div>
-
+    
 <div class="card">
 <h3>24/7 AI Replies</h3>
 <p>Your customers always receive an instant response.</p>
