@@ -926,36 +926,43 @@ form.reset();
 });
 
 const feedbackForm = document.getElementById("feedbackForm");
-
 feedbackForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    alert("Feedback button clicked!");
 
-    const feedbackText = document.getElementById("feedback").value.trim();
+    try {
+        alert("Feedback button clicked!");
 
-    if (!feedbackText) {
-        alert("Please enter your feedback.");
-        return;
+        const feedbackText = document.getElementById("feedback").value.trim();
+
+        if (!feedbackText) {
+            alert("Please enter your feedback.");
+            return;
+        }
+
+        const { data, error } = await supabase
+            .from("feedback")
+            .insert([
+                {
+                    feedback: feedbackText
+                }
+            ])
+            .select();
+
+        if (error) {
+            alert("Supabase Error: " + error.message);
+            console.error(error);
+            return;
+        }
+
+        alert("✅ Thank you for your feedback!");
+        console.log(data);
+        feedbackForm.reset();
+
+    } catch (err) {
+        alert("JavaScript Error: " + err.message);
+        console.error(err);
     }
-
-    const { error } = await supabase
-        .from("feedback")
-        .insert([
-            {
-                feedback: feedbackText
-            }
-        ]);
-
-    if (error) {
-        console.error(error);
-        alert(error.message);
-        return;
-    }
-
-    alert("✅ Thank you for your feedback!");
-    feedbackForm.reset();
 });
-
 const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 const main = document.querySelector("main");
