@@ -73,15 +73,16 @@ cursor:pointer;
 
 .sidebar{
 position:fixed;
-left:0;
 top:0;
-width:230px;
+left:-280px;
+width:280px;
 height:100%;
-background:#0f0f0f;
-border-right:1px solid #202020;
-padding-top:40px;
-transition:.3s;
-z-index:1000;
+background:#050505;
+border-right:1px solid #1a1a1a;
+padding:120px 30px 40px; /* pushes menu below the logo */
+transition:0.4s ease;
+z-index:999;
+overflow-y:auto;
 }
 
 .sidebar h2{
@@ -423,6 +424,9 @@ REPLI<span>NITY</span>
     
 <div id="sidebar" class="sidebar">
 <h2>REPLI<span>NITY</span></h2>
+<div class="sidebar-logo">
+  <img src="logo.png" alt="Replinity Logo">
+</div>
 
 <a href="#">Home</a>
 <a href="#features">Features</a>
