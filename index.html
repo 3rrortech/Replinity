@@ -942,6 +942,16 @@ const feedbackForm = document.getElementById("feedbackForm");
 feedbackForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+fetch("https://6jr9ggu4iu8rj957fjeph84i2404tuyv@hook.eu1.make.com", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    email: email
+  })
+});
+
     try {
         console.log("Feedback button clicked");
 
