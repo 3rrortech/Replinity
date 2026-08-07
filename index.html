@@ -930,7 +930,7 @@ feedbackForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     try {
-        alert("Feedback button clicked!");
+        console.log("Feedback button clicked");
 
         const feedbackText = document.getElementById("feedbackText").value.trim();
 
@@ -953,9 +953,18 @@ feedbackForm.addEventListener("submit", async (e) => {
             return;
         }
 
-        alert("✅ Thank you for your feedback!");
-        feedbackForm.reset();
+        const feedbackSuccess = document.createElement("p");
+feedbackSuccess.textContent = "✅ Thank you for your feedback!";
+feedbackSuccess.style.color = "#39ff14";
+feedbackSuccess.style.marginTop = "15px";
 
+feedbackForm.appendChild(feedbackSuccess);
+feedbackForm.reset();
+
+setTimeout(() => {
+    feedbackSuccess.remove();
+}, 3000);
+        
     } catch (err) {
         alert("JavaScript Error: " + err.message);
         console.error(err);
