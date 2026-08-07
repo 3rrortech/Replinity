@@ -958,18 +958,30 @@ fetch("https://eu1.make.com/public/shared-scenario/FjBLQFvsss9/integration-webho
 
         const feedbackText = document.getElementById("feedbackText").value.trim();
 
+        const feedbackForm = document.getElementById("feedbackForm");
+
+feedbackForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    try {
+        const feedbackText = document
+            .getElementById("feedbackText")
+            .value
+            .trim();
+
         if (!feedbackText) {
             alert("Please enter your feedback.");
             return;
         }
 
+        // Save feedback to Supabase
         const { error } = await supabase
             .from("feedback")
             .insert([
                 {
                     feedback: feedbackText
                 }
-            ])
+            ]);
 
         if (error) {
             alert("Supabase Error: " + error.message);
@@ -977,23 +989,37 @@ fetch("https://eu1.make.com/public/shared-scenario/FjBLQFvsss9/integration-webho
             return;
         }
 
+        // Send feedback to Make.com
+        await fetch("https://hook.eu1.make.com/52ckoe9lqkx99luhdj2w5ssquvtiiheo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                feedback: feedbackText
+            })
+        });
+
+        // Success message
         const feedbackSuccess = document.createElement("p");
-feedbackSuccess.textContent = "✅ Thank you for your feedback!";
-feedbackSuccess.style.color = "#39ff14";
-feedbackSuccess.style.marginTop = "15px";
+        feedbackSuccess.textContent = "✅ Thank you for your feedback!";
+        feedbackSuccess.style.color = "#39ff14";
+        feedbackSuccess.style.marginTop = "15px";
 
-feedbackForm.appendChild(feedbackSuccess);
-feedbackForm.reset();
+        feedbackForm.appendChild(feedbackSuccess);
+        feedbackForm.reset();
 
-setTimeout(() => {
-    feedbackSuccess.remove();
-}, 3000);
-        
+        setTimeout(() => {
+            feedbackSuccess.remove();
+        }, 3000);
+
     } catch (err) {
         alert("JavaScript Error: " + err.message);
         console.error(err);
     }
+})
 });
+    
 const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 const main = document.querySelector("main");
