@@ -901,80 +901,83 @@ document.querySelectorAll("button,a").forEach(item=>{
 });
 </script>
 
-<script type="module">
+    <script type="module">
 
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
 const supabase = createClient(
-"https://eypckjjsgijqbfcxuaiv.supabase.co",
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5cGNrampzZ2lqcWJmY3h1YWl2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4OTAwNzAsImV4cCI6MjEwMTQ2NjA3MH0.PFJziOLIOGqHh2nXl_aF3qp5Gy-3_hcl0RtIW65LIQc"
+    "https://eypckjjsgijqbfcxuaiv.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5cGNrampzZ2lqcWJmY3h1YWl2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4OTAwNzAsImV4cCI6MjEwMTQ2NjA3MH0.PFJziOLIOGqHh2nXl_aF3qp5Gy-3_hcl0RtIW65LIQc"
 );
 
-const form = document.getElementById("waitlistForm");
+
+/* =========================
+   WAITLIST
+========================= */
+
+const waitlistForm = document.getElementById("waitlistForm");
 const successMessage = document.getElementById("successMessage");
 
-form.addEventListener("submit", async (e)=>{
+waitlistForm.addEventListener("submit", async (e) => {
 
-e.preventDefault();
+    e.preventDefault();
 
-const owner=document.getElementById("owner").value.trim();
-const business=document.getElementById("business").value.trim();
-const email=document.getElementById("email").value.trim();
+    const owner = document.getElementById("owner").value.trim();
+    const business = document.getElementById("business").value.trim();
+    const email = document.getElementById("email").value.trim();
 
-const { error } = await supabase
-.from("waitlist")
-.insert([{
-owner_name:owner,
-business_name:business,
-email:email
-}]);
+    if (!owner || !business || !email) {
+        alert("Please complete all fields.");
+        return;
+    }
 
-if(error){
-alert(error.message);
-return;
-}
+    const { error } = await supabase
+        .from("waitlist")
+        .insert([
+            {
+                owner_name: owner,
+                business_name: business,
+                email: email
+            }
+        ]);
 
-successMessage.style.display="block";
-form.reset();
+    if (error) {
+        console.error(error);
+        alert("Waitlist Error: " + error.message);
+        return;
+    }
+
+    successMessage.style.display = "block";
+
+    waitlistForm.reset();
 
 });
+
+
+/* =========================
+   FEEDBACK
+========================= */
 
 const feedbackForm = document.getElementById("feedbackForm");
-feedbackForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-fetch("https://eu1.make.com/public/shared-scenario/FjBLQFvsss9/integration-webhooks", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    email: email
-  })
-});
-
-    try {
-        console.log("Feedback button clicked");
-
-        const feedbackText = document.getElementById("feedbackText").value.trim();
-
-        const feedbackForm = document.getElementById("feedbackForm");
 
 feedbackForm.addEventListener("submit", async (e) => {
+
     e.preventDefault();
 
+    const feedbackText = document
+        .getElementById("feedbackText")
+        .value
+        .trim();
+
+    if (!feedbackText) {
+        alert("Please enter your feedback.");
+        return;
+    }
+
     try {
-        const feedbackText = document
-            .getElementById("feedbackText")
-            .value
-            .trim();
 
-        if (!feedbackText) {
-            alert("Please enter your feedback.");
-            return;
-        }
+        /* SAVE FEEDBACK TO SUPABASE */
 
-        // Save feedback to Supabase
         const { error } = await supabase
             .from("feedback")
             .insert([
@@ -984,65 +987,121 @@ feedbackForm.addEventListener("submit", async (e) => {
             ]);
 
         if (error) {
-            alert("Supabase Error: " + error.message);
             console.error(error);
+            alert("Supabase Error: " + error.message);
             return;
         }
 
-        // Send feedback to Make.com
-        await fetch("https://hook.eu1.make.com/52ckoe9lqkx99luhdj2w5ssquvtiiheo", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                feedback: feedbackText
-            })
-        });
 
-        // Success message
-        const feedbackSuccess = document.createElement("p");
-        feedbackSuccess.textContent = "✅ Thank you for your feedback!";
-        feedbackSuccess.style.color = "#39ff14";
-        feedbackSuccess.style.marginTop = "15px";
+        /* SEND FEEDBACK TO MAKE.COM */
 
-        feedbackForm.appendChild(feedbackSuccess);
+        const makeResponse = await fetch(
+            "https://hook.eu1.make.com/52ckoe9lqkx99luhdj2w5ssquvtiiheo",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    feedback: feedbackText
+                })
+            }
+        );
+
+        if (!makeResponse.ok) {
+            console.warn("Make.com webhook did not respond successfully.");
+        }
+
+
+        /* SUCCESS MESSAGE */
+
+        let feedbackSuccess =
+            document.getElementById("feedbackSuccess");
+
+        if (!feedbackSuccess) {
+
+            feedbackSuccess = document.createElement("p");
+
+            feedbackSuccess.id = "feedbackSuccess";
+
+            feedbackSuccess.style.color = "#39ff14";
+            feedbackSuccess.style.marginTop = "15px";
+            feedbackSuccess.style.fontSize = "16px";
+
+            feedbackForm.appendChild(feedbackSuccess);
+        }
+
+        feedbackSuccess.textContent =
+            "✅ Thank you for your feedback!";
+
         feedbackForm.reset();
 
+
         setTimeout(() => {
+
             feedbackSuccess.remove();
+
         }, 3000);
 
+
     } catch (err) {
-        alert("JavaScript Error: " + err.message);
+
         console.error(err);
+
+        alert(
+            "Something went wrong while sending your feedback."
+        );
+
     }
-})
+
 });
-    
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
 const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
-const main = document.querySelector("main");
-const footer = document.querySelector("footer");
 
 menuBtn.addEventListener("click", () => {
+
     sidebar.classList.toggle("active");
+
 });
+
+
+/* =========================
+   CLOSE SIDEBAR AFTER CLICK
+========================= */
 
 document.querySelectorAll(".sidebar a").forEach(link => {
+
     link.addEventListener("click", () => {
+
         sidebar.classList.remove("active");
+
     });
+
 });
 
+
+/* =========================
+   CLOSE SIDEBAR OUTSIDE
+========================= */
+
 document.addEventListener("click", (e) => {
+
     if (
         sidebar.classList.contains("active") &&
         !sidebar.contains(e.target) &&
         !menuBtn.contains(e.target)
     ) {
+
         sidebar.classList.remove("active");
+
     }
+
 });
 
 </script>
