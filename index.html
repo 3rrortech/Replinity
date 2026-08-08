@@ -225,14 +225,21 @@ text-decoration:none;
 transition:.25s;
 }
 
+.btn{
+transition:
+transform .15s ease,
+box-shadow .2s ease,
+background .2s ease;
+}
+
 .btn:hover{
 transform:translateY(-3px);
 box-shadow:0 0 30px #39ff14;
 }
 
 .btn:active{
-    transform:scale(0.94) translateY(2px);
-    box-shadow:0 0 10px #39ff14;
+transform:scale(.94);
+box-shadow:0 0 12px #39ff14;
 }
 
 footer{
@@ -811,7 +818,7 @@ Send Feedback
 
     <p>
         Our mission is to help millions of businesses never miss another customer.
-        We want AI to become as essential to business as email or a phone number,
+        We want AI to help free time for a small teams in businesses by putting everything in one place,
         making fast, reliable customer communication available to everyone.
     </p>
 
@@ -829,7 +836,7 @@ Send Feedback
         <h3>Privacy</h3>
         <p>
             Your business data stays yours. Replinity never sells your customer
-            information. We use secure technology to protect your data and only
+            information. We use secure technology like official meta API and more to protect your data and only
             process it to provide our services.
         </p>
     </div>
@@ -890,95 +897,6 @@ document.addEventListener("mousemove", (e) => {
         cursor.style.left = e.clientX + "px";
         cursor.style.top = e.clientY + "px";
     }
-});
-
-/* =========================
-   REPLINITY — PREMIUM MOUSE CLICK
-========================= */
-
-let audioContext;
-
-function playClickSound() {
-
-    try {
-
-        if (!audioContext) {
-            audioContext = new (
-                window.AudioContext ||
-                window.webkitAudioContext
-            )();
-        }
-
-        if (audioContext.state === "suspended") {
-            audioContext.resume();
-        }
-
-        const now = audioContext.currentTime;
-
-        /* Short physical "tick" */
-        const oscillator = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-
-        oscillator.type = "square";
-
-        oscillator.frequency.setValueAtTime(520, now);
-        oscillator.frequency.exponentialRampToValueAtTime(
-            180,
-            now + 0.025
-        );
-
-        gain.gain.setValueAtTime(0.0001, now);
-
-        gain.gain.exponentialRampToValueAtTime(
-            0.16,
-            now + 0.001
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            0.0001,
-            now + 0.035
-        );
-
-        oscillator.connect(gain);
-        gain.connect(audioContext.destination);
-
-        oscillator.start(now);
-        oscillator.stop(now + 0.04);
-
-    } catch (error) {
-
-        console.log(
-            "Replinity click sound unavailable:",
-            error
-        );
-
-    }
-}
-
-
-/* =========================
-   BUTTON CLICKS
-========================= */
-
-document.querySelectorAll("button").forEach(button => {
-
-    button.addEventListener("click", () => {
-        playClickSound();
-    });
-
-});
-
-
-/* =========================
-   LINK CLICKS
-========================= */
-
-document.querySelectorAll("a").forEach(link => {
-
-    link.addEventListener("click", () => {
-        playClickSound();
-    });
-
 });
 
     </script>
