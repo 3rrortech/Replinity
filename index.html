@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Replinity | Feedback</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:'Orbitron',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    height:130px;
+    background:#050505;
+    display:flex;
+    align-items:center;
+    padding:0 40px;
+    gap:28px;
+    border-bottom:2px solid #39ff14;
+    box-shadow:
+        0 0 15px rgba(57,255,20,.35),
+        0 0 35px rgba(57,255,20,.12);
+}
+
+/* MENU */
+
+.menu-btn{
+    width:78px;
+    height:78px;
+    border:none;
+    border-radius:18px;
+    background:#39ff14;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    box-shadow:0 0 25px rgba(57,255,20,.35);
+}
+
+.menu-btn span{
+    width:34px;
+    height:4px;
+    background:#050505;
+    border-radius:5px;
+}
+
+/* LOGO */
+
+.logo{
+    font-size:40px;
+    font-weight:900;
+    letter-spacing:-2px;
+    white-space:nowrap;
+}
+
+.logo-white{
+    color:#fff;
+}
+
+.logo-green{
+    color:#39ff14;
+    text-shadow:
+        0 0 8px rgba(57,255,20,.8),
+        0 0 18px rgba(57,255,20,.4);
+}
+
+/* AI ICON */
+
+.ai-icon{
+    width:58px;
+    height:58px;
+    margin-left:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#090909;
+    border:1px solid rgba(57,255,20,.2);
+    box-shadow:0 0 20px rgba(57,255,20,.08);
+}
+
+.ai-icon span{
+    font-size:28px;
+    color:#39ff14;
+    text-shadow:0 0 12px #39ff14;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    width:100%;
+    max-width:1000px;
+    margin:0 auto;
+    padding:70px 30px 100px;
+}
+
+/* =========================
+   PAYMENTS CARD
+========================= */
+
+.payment-card{
+    background:
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(57,255,20,.05),
+            transparent 45%
+        ),
+        #101010;
+
+    border:1px solid rgba(57,255,20,.2);
+    border-radius:28px;
+    padding:50px;
+    box-shadow:
+        0 0 25px rgba(57,255,20,.05),
+        inset 0 0 30px rgba(255,255,255,.015);
+}
+
+.payment-card h2{
+    color:#39ff14;
+    font-size:40px;
+    margin-bottom:25px;
+    text-shadow:
+        0 0 10px rgba(57,255,20,.5);
+}
+
+.payment-card p{
+    color:#aaa;
+    font-size:22px;
+    line-height:1.9;
+    font-weight:500;
+}
+
+/* =========================
+   FEEDBACK
+========================= */
+
+.feedback-section{
+    text-align:center;
+    padding:75px 0 40px;
+}
+
+.feedback-section h1{
+    font-size:48px;
+    font-weight:800;
+    margin-bottom:25px;
+    color:#fff;
+    text-shadow:0 0 12px rgba(255,255,255,.15);
+}
+
+.feedback-section .subtitle{
+    color:#999;
+    font-size:20px;
+    line-height:1.7;
+    max-width:750px;
+    margin:0 auto 40px;
+}
+
+/* =========================
+   FEEDBACK BOX
+========================= */
+
+.feedback-box{
+    width:100%;
+    min-height:250px;
+    resize:vertical;
+
+    background:
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(57,255,20,.08),
+            transparent 35%
+        ),
+        #101010;
+
+    color:#fff;
+
+    border:2px solid rgba(57,255,20,.7);
+    border-radius:22px;
+
+    padding:28px;
+
+    font-family:'Orbitron',sans-serif;
+    font-size:18px;
+    line-height:1.7;
+
+    outline:none;
+
+    box-shadow:
+        0 0 12px rgba(57,255,20,.15),
+        0 0 35px rgba(57,255,20,.06);
+
+    transition:.3s ease;
+}
+
+.feedback-box::placeholder{
+    color:#777;
+}
+
+.feedback-box:focus{
+    border-color:#39ff14;
+
+    box-shadow:
+        0 0 15px rgba(57,255,20,.4),
+        0 0 45px rgba(57,255,20,.15);
+}
+
+/* =========================
+   SEND BUTTON
+========================= */
+
+.send-btn{
+    margin-top:35px;
+
+    min-width:330px;
+    padding:22px 40px;
+
+    border:none;
+    border-radius:18px;
+
+    background:#39ff14;
+    color:#050505;
+
+    font-family:'Orbitron',sans-serif;
+    font-size:20px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 15px rgba(57,255,20,.55),
+        0 0 35px rgba(57,255,20,.25);
+
+    transition:.25s ease;
+}
+
+.send-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 0 20px rgba(57,255,20,.8),
+        0 0 55px rgba(57,255,20,.4);
+}
+
+.send-btn:active{
+    transform:scale(.97);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    position:relative;
+
+    padding:65px 40px 45px;
+
+    background:
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(57,255,20,.12),
+            transparent 35%
+        ),
+        #070707;
+
+    border-top:1px solid rgba(57,255,20,.35);
+
+    overflow:hidden;
+}
+
+.footer-inner{
+    max-width:1000px;
+    margin:auto;
+}
+
+/* FOOTER LOGO */
+
+.footer-logo{
+    font-size:32px;
+    font-weight:900;
+    margin-bottom:18px;
+}
+
+.footer-tagline{
+    color:#888;
+    font-size:17px;
+    margin-bottom:45px;
+}
+
+/* =========================
+   FOUNDER
+========================= */
+
+.founder-label{
+    color:#9b9b9b;
+    font-size:17px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+/* ES0NA + ZEPE */
+
+.founder-name{
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.founder-first{
+    color:#fff;
+}
+
+.founder-last{
+    color:#39ff14;
+
+    text-shadow:
+        0 0 7px rgba(57,255,20,.9),
+        0 0 18px rgba(57,255,20,.65),
+        0 0 35px rgba(57,255,20,.35);
+}
+
+/* DIVIDER */
+
+.footer-divider{
+    width:100%;
+    max-width:450px;
+    height:1px;
+
+    background:rgba(57,255,20,.35);
+
+    margin:30px 0;
+}
+
+/* COPYRIGHT */
+
+.copyright{
+    color:#777;
+    font-size:15px;
+    line-height:1.6;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    header{
+        height:130px;
+        padding:0 20px;
+        gap:20px;
+    }
+
+    .menu-btn{
+        width:76px;
+        height:76px;
+        flex-shrink:0;
+    }
+
+    .logo{
+        font-size:30px;
+        letter-spacing:-2px;
+    }
+
+    .ai-icon{
+        width:55px;
+        height:55px;
+        flex-shrink:0;
+    }
+
+    main{
+        padding:20px 20px 70px;
+    }
+
+    .payment-card{
+        padding:40px 40px;
+        border-radius:25px;
+    }
+
+    .payment-card h2{
+        font-size:34px;
+    }
+
+    .payment-card p{
+        font-size:18px;
+        line-height:2;
+    }
+
+    .feedback-section{
+        padding:65px 0 35px;
+    }
+
+    .feedback-section h1{
+        font-size:38px;
+    }
+
+    .feedback-section .subtitle{
+        font-size:17px;
+        line-height:1.7;
+    }
+
+    .feedback-box{
+        min-height:260px;
+        font-size:16px;
+        padding:25px;
+    }
+
+    .send-btn{
+        width:90%;
+        min-width:0;
+        font-size:17px;
+        padding:20px 15px;
+    }
+
+    footer{
+        padding:55px 40px 40px;
+    }
+
+    .footer-logo{
+        font-size:28px;
+    }
+
+    .footer-tagline{
+        font-size:15px;
+        line-height:1.7;
+    }
+
+    .founder-label{
+        font-size:15px;
+    }
+
+    .founder-name{
+        font-size:34px;
+    }
+
+    .copyright{
+        font-size:13px;
+    }
+}
+
+/* EXTRA SMALL PHONES */
+
+@media(max-width:390px){
+
+    header{
+        gap:13px;
+        padding:0 15px;
+    }
+
+    .menu-btn{
+        width:65px;
+        height:65px;
+        border-radius:16px;
+    }
+
+    .menu-btn span{
+        width:29px;
+        height:3px;
+    }
+
+    .logo{
+        font-size:25px;
+    }
+
+    .ai-icon{
+        width:48px;
+        height:48px;
+    }
+
+    .payment-card{
+        padding:30px 25px;
+    }
+
+    .payment-card h2{
+        font-size:29px;
+    }
+
+    .payment-card p{
+        font-size:16px;
+    }
+
+    .feedback-section h1{
+        font-size:32px;
+    }
+
+    .founder-name{
+        font-size:30px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <button class="menu-btn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="logo">
+        <span class="logo-white">REPL</span><span class="logo-green">INITY</span>
+    </div>
+
+    <div class="ai-icon">
+        <span>◉</span>
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+    <!-- PAYMENT INFORMATION -->
+
+    <section class="payment-card">
+
+        <h2>Payments</h2>
+
+        <p>
+            Payments are processed securely through Yoco.
+            After payment, Replinity will use the information
+            provided during onboarding to prepare your account.
+        </p>
+
+    </section>
+
+
+    <!-- FEEDBACK -->
+
+    <section class="feedback-section">
+
+        <h1>Send Feedback</h1>
+
+        <p class="subtitle">
+            Help us build Replinity better. Tell us what
+            you think.
+        </p>
+
+        <textarea
+            class="feedback-box"
+            placeholder="Your feedback..."
+        ></textarea>
+
+        <br>
+
+        <button class="send-btn" onclick="sendFeedback()">
+            ➤ &nbsp; Send Feedback
+        </button>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div class="footer-logo">
+            <span class="logo-white">REPL</span><span class="logo-green">INITY</span>
+        </div>
+
+        <div class="footer-tagline">
+            Never Miss A Customer Again.
+        </div>
+
+
+        <div class="footer-divider"></div>
+
+
+        <!-- FOUNDER -->
+
+        <div class="founder-label">
+            FOUNDER &amp; CEO
+        </div>
+
+        <div class="founder-name">
+            <span class="founder-first">Esona</span>
+            <span class="founder-last">Zepe</span>
+        </div>
+
+
+        <div class="footer-divider"></div>
+
+
+        <div class="copyright">
+            © 2026 Replinity. All rights reserved.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+function sendFeedback(){
+
+    const feedback =
+        document.querySelector(".feedback-box").value.trim();
+
+    if(!feedback){
+
+        alert("Please enter your feedback first.");
+
+        return;
+    }
+
+    /*
+       Replace this section with your
+       email / Supabase / Make webhook
+       when you are ready.
+    */
+
+    alert("Thank you for helping us build Replinity better! 💚");
+
+    document.querySelector(".feedback-box").value = "";
+
+}
+
+</script>
+
+</body>
+  </html>
