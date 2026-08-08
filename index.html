@@ -407,47 +407,30 @@ object-fit:contain;
     color:#ccc;
     line-height:1.7;
     }
-    
+
 @media (max-width:900px){
 
-.header-logo{
-    width:48px;
-    height:48px;
-}
+    .menuBtn{
+        display:block;
+        margin-right:15px;
+        flex-shrink:0;
+    }
 
-.brand h1{
-    font-size:28px;
-}
+    .sidebar{
+        top:80px;
+        left:0;
+        width:280px;
+        height:calc(100vh - 80px);
+        transform:translateX(-100%);
+        transition:transform .4s ease;
+        z-index:998;
+    }
 
-.menuBtn{
-display:block;
-margin-right:15px;
-flex-shrink:0;
-}
+    .sidebar.active{
+        transform:translateX(0);
+    }
 
-.brand{
-    display:flex;
-    align-items:center;
-    flex:1;
-}
-
-.header-logo{
-    margin-left:auto;
-}
-    
-.topHeader{
-left:0;
-padding:0 20px;
-}
-
-.sidebar{
-    left:-280px;
-    transition:0.4s ease;
-}
-
-.sidebar.active{
-    left:0;
-}
+    }
     
 .brand img{
 width:44px;
@@ -1078,18 +1061,9 @@ feedbackForm.addEventListener("submit", async (e) => {
 const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 
-/* ===== PREMIUM MENU BUTTON CLICK ===== */
-
-.menuBtn{
-    transition:
-        transform .12s ease,
-        box-shadow .15s ease,
-        background .15s ease;
-}
-
 menuBtn.addEventListener("click", () => {
 
-    // Premium click animation
+    // Premium button click animation
     menuBtn.classList.add("menu-clicked");
 
     setTimeout(() => {
@@ -1099,7 +1073,6 @@ menuBtn.addEventListener("click", () => {
     // Open / close sidebar
     sidebar.classList.toggle("active");
 
-});
 });
 
 
