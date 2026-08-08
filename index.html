@@ -996,17 +996,14 @@ feedbackForm.addEventListener("submit", async (e) => {
         /* SEND FEEDBACK TO MAKE.COM */
 
         const makeResponse = await fetch(
-            "https://hook.eu1.make.com/52ckoe9lqkx99luhdj2w5ssquvtiiheo",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    feedback: feedbackText
-                })
-            }
-        );
+    "https://hook.eu1.make.com/52ckoe9lqkx99luhdj2w5ssquvtiiheo",
+    {
+        method: "POST",
+        body: new URLSearchParams({
+            feedback: feedbackText
+        })
+    }
+);
 
         if (!makeResponse.ok) {
             console.warn("Make.com webhook did not respond successfully.");
