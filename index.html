@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Replinity | Never Miss A Customer Again</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* ============================= */
+/* GLOBAL */
+/* ============================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Orbitron',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#070707;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+.cursor{
+    position:fixed;
+    width:220px;
+    height:220px;
+    background:radial-gradient(circle,#39ff1450,transparent 70%);
+    pointer-events:none;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    z-index:9999;
+    filter:blur(35px);
+    transition:.05s;
+}
+
+.backgroundLogo{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:12vw;
+    font-weight:900;
+    opacity:.03;
+    letter-spacing:8px;
+    pointer-events:none;
+    user-select:none;
+    z-index:-1;
+}
+
+.backgroundLogo span{
+    color:#39ff14;
+    text-shadow:0 0 30px #39ff14;
+}
+
+/* ============================= */
+/* HEADER */
+/* ============================= */
+
+.topHeader{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:80px;
+    background:#070707;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+    border-bottom:1px solid #222;
+    z-index:1000;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.brand h1{
+    font-size:34px;
+    font-weight:900;
+    color:#fff;
+}
+
+.brand h1 span{
+    color:#39ff14;
+    text-shadow:0 0 15px #39ff14;
+}
+
+.header-logo{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+}
+
+.topLine{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:2px;
+    background:#39ff14;
+    box-shadow:0 0 15px #39ff14;
+}
+
+/* ============================= */
+/* MENU */
+/* ============================= */
+
+.menuBtn{
+    display:none;
+    background:#39ff14;
+    color:#000;
+    border:none;
+    width:52px;
+    height:52px;
+    border-radius:12px;
+    font-size:28px;
+    cursor:pointer;
+    margin-right:15px;
+    flex-shrink:0;
+    transition:
+        transform .12s ease,
+        box-shadow .15s ease,
+        background .15s ease;
+}
+
+.menuBtn.menu-clicked{
+    transform:scale(.88);
+    background:#2ee610;
+    box-shadow:
+        0 0 10px #39ff14,
+        0 0 25px #39ff14,
+        0 0 45px #39ff1460;
+}
+
+/* ============================= */
+/* SIDEBAR */
+/* ============================= */
+
+.sidebar{
+    position:fixed;
+    top:80px;
+    left:0;
+    width:280px;
+    height:calc(100vh - 80px);
+    transform:translateX(-100%);
+    background:#050505;
+    border-right:1px solid #222;
+    transition:transform .4s ease;
+    z-index:998;
+    overflow-y:auto;
+}
+
+.sidebar.active{
+    transform:translateX(0);
+}
+
+.sidebar-logo{
+    display:flex;
+    justify-content:center;
+    margin:30px 0 20px;
+}
+
+.sidebar-logo img{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:30px;
+}
+
+.sidebar h2 span{
+    color:#39ff14;
+    text-shadow:0 0 15px #39ff14;
+}
+
+.sidebar a{
+    display:block;
+    padding:18px 30px;
+    color:#fff;
+    text-decoration:none;
+    border-left:3px solid transparent;
+    transition:.3s;
+}
+
+.sidebar a:hover{
+    background:#181818;
+    border-left-color:#39ff14;
+    padding-left:40px;
+    box-shadow:0 0 15px #39ff1440;
+}
+
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+.hero{
+    min-height:100vh;
+    padding:140px 25px 60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:72px;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#39ff14;
+    text-shadow:0 0 20px #39ff14;
+}
+
+.hero p{
+    font-size:20px;
+    color:#bdbdbd;
+    max-width:700px;
+    margin:0 auto;
+    line-height:1.7;
+}
+
+/* ============================= */
+/* BUTTON */
+/* ============================= */
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:16px 40px;
+    background:#39ff14;
+    color:#000;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 30px #39ff14;
+}
+
+.btn:active{
+    transform:scale(.94);
+}
+
+/* ============================= */
+/* GENERAL SECTIONS */
+/* ============================= */
+
+.section{
+    padding:100px 60px;
+    text-align:center;
+}
+
+.section h2{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.section > p{
+    color:#bdbdbd;
+    margin-bottom:40px;
+    line-height:1.7;
+}
+
+/* ============================= */
+/* FEATURES */
+/* ============================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.card,
+.priceCard{
+    background:#111;
+    border:1px solid #222;
+    border-radius:16px;
+    padding:30px;
+    transition:.3s;
+    position:relative;
+}
+
+.card:hover,
+.priceCard:hover{
+    transform:translateY(-8px);
+    border-color:#39ff14;
+    box-shadow:0 0 30px rgba(57,255,20,.2);
+}
+
+.card h3,
+.priceCard h3{
+    margin-bottom:15px;
+}
+
+.card p,
+.priceCard p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+/* ============================= */
+/* PRICING */
+/* ============================= */
+
+.priceCard h1{
+    font-size:48px;
+    color:#39ff14;
+    margin:15px 0;
+}
+
+.priceCard span{
+    color:#888;
+}
+
+.badge{
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:#39ff14;
+    color:#000;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* ============================= */
+/* FOUNDING / FUNDING */
+/* ============================= */
+
+.founding-section{
+    padding:120px 20px;
+    background:
+        radial-gradient(circle at top,#102010 0%,#050505 45%,#050505 100%);
+    color:white;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.founding-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            transparent 49%,
+            rgba(57,255,136,.025) 50%,
+            transparent 51%
+        );
+    background-size:80px 80px;
+    pointer-events:none;
+}
+
+.founding-header{
+    max-width:850px;
+    margin:0 auto 65px;
+    position:relative;
+    z-index:1;
+}
+
+.founding-badge{
+    display:inline-block;
+    padding:10px 20px;
+    border:1px solid #39ff88;
+    border-radius:50px;
+    color:#39ff88;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:22px;
+    box-shadow:0 0 20px rgba(57,255,136,.12);
+}
+
+.founding-header h2{
+    font-size:clamp(34px,6vw,62px);
+    margin-bottom:22px;
+    line-height:1.1;
+}
+
+.founding-header h2 span{
+    color:#39ff88;
+    text-shadow:0 0 20px rgba(57,255,136,.35);
+}
+
+.founding-header p{
+    color:#aaa;
+    font-size:16px;
+    line-height:1.8;
+    max-width:750px;
+    margin:auto;
+}
+
+.founding-plans{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    position:relative;
+    z-index:1;
+}
+
+.founding-card{
+    position:relative;
+    padding:42px 30px 32px;
+    background:rgba(13,13,13,.95);
+    border:1px solid #252525;
+    border-radius:22px;
+    text-align:left;
+    transition:.3s ease;
+    overflow:hidden;
+}
+
+.founding-card::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:2px;
+    background:#39ff88;
+    opacity:.35;
+}
+
+.founding-card:hover{
+    transform:translateY(-10px);
+    border-color:#39ff88;
+    box-shadow:0 0 40px rgba(57,255,136,.15);
+}
+
+.founding-card.featured{
+    border:1px solid #39ff88;
+    box-shadow:0 0 35px rgba(57,255,136,.1);
+    transform:translateY(-8px);
+}
+
+.founding-card.featured:hover{
+    transform:translateY(-14px);
+}
+
+.popular-badge{
+    position:absolute;
+    top:0;
+    right:25px;
+    background:#39ff88;
+    color:#000;
+    padding:8px 14px;
+    border-radius:0 0 12px 12px;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.plan-label{
+    color:#39ff88;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.founding-card h3{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.price{
+    margin-bottom:5px;
+}
+
+.price span{
+    font-size:42px;
+    font-weight:900;
+    color:#fff;
+}
+
+.price-note{
+    color:#888;
+    font-size:13px;
+    margin-bottom:30px;
+}
+
+.discount-box{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 12px;
+    margin-bottom:25px;
+    border-radius:8px;
+    background:rgba(57,255,136,.08);
+    border:1px solid rgba(57,255,136,.2);
+    color:#39ff88;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.5px;
+}
+
+.founding-card ul{
+    list-style:none;
+    padding:0;
+    margin:0 0 30px;
+}
+
+.founding-card li{
+    color:#ccc;
+    margin-bottom:14px;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.funding-btn{
+    display:block;
+    width:100%;
+    padding:17px 12px;
+    background:#39ff88;
+    color:#000;
+    text-decoration:none;
+    text-align:center;
+    border-radius:12px;
+    font-weight:900;
+    font-size:13px;
+    letter-spacing:.3px;
+    transition:.25s ease;
+}
+
+.funding-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 0 20px rgba(57,255,136,.4),
+        0 0 40px rgba(57,255,136,.15);
+}
+
+.funding-btn:active{
+    transform:scale(.96);
+}
+
+.growth-btn{
+    background:#39ff14;
+}
+
+.founding-security{
+    margin-top:38px;
+    color:#777;
+    font-size:13px;
+    position:relative;
+    z-index:1;
+}
+
+/* ============================= */
+/* HOW / ABOUT / VISION / POLICY */
+/* ============================= */
+
+.about-section,
+.how-section,
+.vision-section,
+.policy-section{
+    max-width:1100px;
+    margin:100px auto;
+    padding:0 25px;
+    color:#fff;
+}
+
+.about-section h2,
+.how-section h2,
+.vision-section h2,
+.policy-section h2{
+    text-align:center;
+    font-size:2.2rem;
+    color:#00ff88;
+    margin-bottom:30px;
+}
+
+.about-section p,
+.vision-section p{
+    text-align:center;
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#ccc;
+    max-width:850px;
+    margin:20px auto;
+}
+
+.step{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:#111;
+    border:1px solid rgba(0,255,136,.2);
+    padding:20px;
+    border-radius:14px;
+    margin:15px 0;
+}
+
+.step span{
+    min-width:45px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#00ff88;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.step p{
+    color:#ddd;
+    font-size:1rem;
+    line-height:1.6;
+}
+
+.policy-card{
+    background:#111;
+    border:1px solid rgba(0,255,136,.2);
+    border-radius:16px;
+    padding:25px;
+    margin:20px 0;
+}
+
+.policy-card h3{
+    color:#00ff88;
+    margin-bottom:12px;
+}
+
+.policy-card p{
+    color:#ccc;
+    line-height:1.7;
+}
+
+/* ============================= */
+/* FOUNDER */
+/* ============================= */
+
+.founder-section{
+    padding:110px 25px;
+    text-align:center;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(57,255,20,.08),
+            transparent 55%
+        );
+}
+
+.founder-label{
+    color:#777;
+    font-size:16px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:18px;
+    text-transform:uppercase;
+}
+
+.founder-name{
+    font-size:clamp(48px,8vw,82px);
+    font-weight:900;
+    line-height:1;
+}
+
+.founder-name .eson{
+    color:#fff;
+}
+
+.founder-name .zepe{
+    color:#39ff14;
+    text-shadow:
+        0 0 10px #39ff14,
+        0 0 25px #39ff14,
+        0 0 50px rgba(57,255,20,.45);
+}
+
+.founder-line{
+    width:90px;
+    height:2px;
+    background:#39ff14;
+    margin:30px auto 0;
+    box-shadow:0 0 15px #39ff14;
+}
+
+/* ============================= */
+/* WAITLIST */
+/* ============================= */
+
+#waitlistForm{
+    max-width:650px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+#waitlistForm input{
+    width:100%;
+    padding:18px;
+    background:#111;
+    border:2px solid #222;
+    border-radius:12px;
+    color:#fff;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+#waitlistForm input:focus{
+    border-color:#39ff14;
+    box-shadow:0 0 18px rgba(57,255,20,.4);
+}
+
+#waitlistForm input::placeholder{
+    color:#888;
+}
+
+/* ============================= */
+/* FEEDBACK */
+/* ============================= */
+
+#feedbackForm{
+    max-width:650px;
+    margin:35px auto 0;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+#feedbackForm input,
+#feedbackForm textarea{
+    width:100%;
+    padding:18px;
+    background:#111;
+    border:2px solid #222;
+    border-radius:12px;
+    color:#fff;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+#feedbackForm input:focus,
+#feedbackForm textarea:focus{
+    border-color:#39ff14;
+    box-shadow:0 0 18px rgba(57,255,20,.4);
+}
+
+#feedbackForm input::placeholder,
+#feedbackForm textarea::placeholder{
+    color:#888;
+}
+
+#feedbackForm textarea{
+    resize:vertical;
+}
+
+/* ============================= */
+/* CONTACT */
+/* ============================= */
+
+.contact-note{
+    color:#888;
+    margin-top:20px;
+    font-size:13px;
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+footer{
+    padding:60px 40px;
+    background:#090909;
+    border-top:1px solid #202020;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:30px;
+    color:#888;
+}
+
+footer h3{
+    color:#fff;
+    margin-bottom:10px;
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media(max-width:900px){
+
+    .menuBtn{
+        display:block;
+    }
+
+    .brand h1{
+        font-size:26px;
+    }
+
+    .header-logo{
+        width:44px;
+        height:44px;
+    }
+
+    .hero{
+        padding:120px 25px 60px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .section{
+        padding:80px 25px;
+    }
+
+    .section h2{
+        font-size:38px;
+    }
+
+    .founding-plans{
+        grid-template-columns:1fr;
+        max-width:500px;
+    }
+
+    .founding-card{
+        padding:35px 25px;
+    }
+
+    .founding-card.featured,
+    .founding-card.featured:hover{
+        transform:none;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .topHeader{
+        padding:0 12px;
+    }
+
+    .brand{
+        gap:8px;
+    }
+
+    .brand h1{
+        font-size:21px;
+    }
+
+    .header-logo{
+        width:38px;
+        height:38px;
+    }
+
+    .menuBtn{
+        width:46px;
+        height:46px;
+        font-size:24px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .section h2{
+        font-size:32px;
+    }
+
+    .founding-header h2{
+        font-size:36px;
+    }
+
+    .price span{
+        font-size:36px;
+    }
+
+    .founder-name{
+        font-size:52px;
+    }
+
+    footer{
+        padding:50px 25px;
+        flex-direction:column;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ============================= -->
+<!-- HEADER -->
+<!-- ============================= -->
+
+<header class="topHeader">
+
+    <button id="menuBtn" class="menuBtn" aria-label="Open menu">
+        ☰
+    </button>
+
+    <div class="brand">
+
+        <h1>
+            REPLI<span>NITY</span>
+        </h1>
+
+        <img
+            src="logo.png"
+            class="header-logo"
+            alt="Replinity Logo"
+        >
+
+    </div>
+
+    <div class="topLine"></div>
+
+</header>
+
+
+<div class="cursor"></div>
+
+<div class="backgroundLogo">
+    REPLI<span>NITY</span>
+</div>
+
+
+<!-- ============================= -->
+<!-- SIDEBAR -->
+<!-- ============================= -->
+
+<div id="sidebar" class="sidebar">
+
+    <div class="sidebar-logo">
+        <img src="logo.png" alt="Replinity Logo">
+    </div>
+
+    <h2>
+        REPLI<span>NITY</span>
+    </h2>
+
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#founding">Funding</a>
+    <a href="#how">How It Works</a>
+    <a href="#about">About</a>
+    <a href="#vision">Vision</a>
+    <a href="#waitlist">Waitlist</a>
+    <a href="#contact">Contact</a>
+    <a href="#feedback">Feedback</a>
+
+</div>
+
+
+<main>
+
+<!-- ============================= -->
+<!-- HERO -->
+<!-- ============================= -->
+
+<section class="hero" id="home">
+
+    <div>
+
+        <h1>
+            Never Miss A <span>Customer</span> Again
+        </h1>
+
+        <p>
+            AI-powered customer replies for South African businesses.
+            Available 24/7 on WhatsApp.
+        </p>
+
+        <a href="#founding" class="btn">
+            Become a Founding Customer
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- FEATURES -->
+<!-- ============================= -->
+
+<section id="features" class="section">
+
+    <h2>Features</h2>
+
+    <p>
+        Everything your business needs to respond to customers automatically.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>24/7 AI Replies</h3>
+            <p>
+                Your customers always receive an instant response.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Lead Capture</h3>
+            <p>
+                Automatically collect customer details.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>WhatsApp Integration</h3>
+            <p>
+                Reply directly on WhatsApp using AI.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Analytics</h3>
+            <p>
+                Track conversations and customer activity.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- PRICING -->
+<!-- ============================= -->
+
+<section id="pricing" class="section">
+
+    <h2>Pricing</h2>
+
+    <p>
+        Simple pricing for every business size.
+    </p>
+
+    <div class="cards">
+
+        <div class="priceCard">
+
+            <div class="badge">
+                Basic
+            </div>
+
+            <h3>Starter</h3>
+
+            <h1>R990</h1>
+
+            <span>Setup</span>
+
+            <p>
+                R499/month
+            </p>
+
+        </div>
+
+
+        <div class="priceCard">
+
+            <div class="badge">
+                Popular
+            </div>
+
+            <h3>Growth</h3>
+
+            <h1>R1990</h1>
+
+            <span>Setup</span>
+
+            <p>
+                R999/month
+            </p>
+
+        </div>
+
+
+        <div class="priceCard">
+
+            <h3>Pro</h3>
+
+            <h1>R3990</h1>
+
+            <span>Setup</span>
+
+            <p>
+                R1999/month
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- FOUNDING / FUNDING -->
+<!-- ============================= -->
+
+<section class="founding-section" id="founding">
+
+    <div class="founding-header">
+
+        <div class="founding-badge">
+            ⚡ LIMITED FOUNDING CUSTOMER OFFER
+        </div>
+
+        <h2>
+            Fund the Future of <span>Replinity</span>
+        </h2>
+
+        <p>
+            Become one of Replinity's first founding customers.
+            Choose your plan below and receive a special
+            <strong style="color:#39ff88;">
+                50% discount for your first 3 months.
+            </strong>
+        </p>
+
+    </div>
+
+
+    <div class="founding-plans">
+
+
+        <!-- STARTER -->
+
+        <div class="founding-card">
+
+            <div class="plan-label">
+                STARTER FUNDING
+            </div>
+
+            <h3>
+                Starter
+            </h3>
+
+            <div class="price">
+                <span>R499</span>
+            </div>
+
+            <p class="price-note">
+                Founding Customer Price
+            </p>
+
+            <div class="discount-box"
+              <div class="discount-box">
+                    ⚡ 50% OFF FIRST 3 MONTHS
+                </div>
+
+                <ul>
+                    <li>✓ AI customer replies 24/7</li>
+                    <li>✓ WhatsApp integration</li>
+                    <li>✓ Customer lead capture</li>
+                    <li>✓ Basic analytics</li>
+                    <li>✓ Founding customer access</li>
+                </ul>
+
+                <a
+                    href="https://pay.yoco.com/r/jv66aY"
+                    class="funding-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Fund Starter — R499
+                </a>
+
+            </div>
+
+
+            <!-- GROWTH -->
+
+            <div class="founding-card featured">
+
+                <div class="popular-badge">
+                    MOST POPULAR
+                </div>
+
+                <div class="plan-label">
+                    GROWTH FUNDING
+                </div>
+
+                <h3>
+                    Growth
+                </h3>
+
+                <div class="price">
+                    <span>R999</span>
+                </div>
+
+                <p class="price-note">
+                    Founding Customer Price
+                </p>
+
+                <div class="discount-box">
+                    ⚡ 50% OFF FIRST 3 MONTHS
+                </div>
+
+                <ul>
+                    <li>✓ Everything in Starter</li>
+                    <li>✓ Advanced AI replies</li>
+                    <li>✓ WhatsApp automation</li>
+                    <li>✓ Advanced lead capture</li>
+                    <li>✓ Advanced analytics</li>
+                    <li>✓ Priority support</li>
+                </ul>
+
+                <a
+                    href="https://pay.yoco.com/r/AJDDPY"
+                    class="funding-btn growth-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Fund Growth — R999
+                </a>
+
+            </div>
+
+
+            <!-- PRO -->
+
+            <div class="founding-card">
+
+                <div class="plan-label">
+                    PRO FUNDING
+                </div>
+
+                <h3>
+                    Pro
+                </h3>
+
+                <div class="price">
+                    <span>R1999</span>
+                </div>
+
+                <p class="price-note">
+                    Founding Customer Price
+                </p>
+
+                <div class="discount-box">
+                    ⚡ 50% OFF FIRST 3 MONTHS
+                </div>
+
+                <ul>
+                    <li>✓ Everything in Growth</li>
+                    <li>✓ Advanced AI automation</li>
+                    <li>✓ Premium WhatsApp features</li>
+                    <li>✓ Full analytics dashboard</li>
+                    <li>✓ Priority customer support</li>
+                    <li>✓ Early access to new features</li>
+                </ul>
+
+                <a
+                    href="https://pay.yoco.com/r/K533xO"
+                    class="funding-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Fund Pro — R1999
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="founding-security">
+            🔒 Secure payment powered by Yoco • Founding customer places are limited.
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- HOW IT WORKS -->
+    <!-- ============================= -->
+
+    <section id="how" class="how-section">
+
+        <h2>How It Works</h2>
+
+        <div class="step">
+            <span>1</span>
+            <p>
+                Your customer sends your business a message on WhatsApp.
+            </p>
+        </div>
+
+        <div class="step">
+            <span>2</span>
+            <p>
+                Replinity's AI understands the customer's question
+                and responds instantly.
+            </p>
+        </div>
+
+        <div class="step">
+            <span>3</span>
+            <p>
+                The customer gets the information they need without
+                waiting for you to respond.
+            </p>
+        </div>
+
+        <div class="step">
+            <span>4</span>
+            <p>
+                You receive the conversation and lead information
+                when your attention is needed.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- ABOUT -->
+    <!-- ============================= -->
+
+    <section id="about" class="about-section">
+
+        <h2>About Replinity</h2>
+
+        <p>
+            Replinity is an AI-powered customer communication platform
+            built to help businesses respond faster, capture more leads,
+            and never miss an opportunity because of a delayed reply.
+        </p>
+
+        <p>
+            Our goal is simple:
+            <strong style="color:#39ff14;">
+                Never Miss A Customer Again.
+            </strong>
+        </p>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- VISION -->
+    <!-- ============================= -->
+
+    <section id="vision" class="vision-section">
+
+        <h2>Our Vision</h2>
+
+        <p>
+            We believe every business should have access to intelligent
+            customer communication without needing a large team or
+            expensive technology.
+        </p>
+
+        <p>
+            Replinity is being built to become the AI customer-reception
+            system for businesses across South Africa and eventually
+            the world.
+        </p>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- WAITLIST -->
+    <!-- ============================= -->
+
+    <section id="waitlist" class="section">
+
+        <h2>Join The Waitlist</h2>
+
+        <p>
+            Be among the first businesses to experience Replinity.
+        </p>
+
+        <form id="waitlistForm">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="text"
+                name="business"
+                placeholder="Business Name"
+                required
+            >
+
+            <input
+                type="tel"
+                name="phone"
+                placeholder="WhatsApp Number"
+                required
+            >
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+            >
+
+            <button type="submit" class="btn">
+                Join Waitlist
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- CONTACT -->
+    <!-- ============================= -->
+
+    <section id="contact" class="section">
+
+        <h2>Contact Replinity</h2>
+
+        <p>
+            Have a question, partnership idea, or want to become
+            a founding customer?
+        </p>
+
+        <a
+            href="mailto:replinity@gmail.com"
+            class="btn"
+        >
+            Contact Us
+        </a>
+
+        <p class="contact-note">
+            We will get back to you as soon as possible.
+        </p>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- FEEDBACK -->
+    <!-- ============================= -->
+
+    <section id="feedback" class="section">
+
+        <h2>Feedback</h2>
+
+        <p>
+            Help us build Replinity better.
+            Tell us what you think about the platform.
+        </p>
+
+        <form id="feedbackForm">
+
+            <input
+                type="text"
+                name="feedbackName"
+                placeholder="Your Name"
+                required
+            >
+
+            <textarea
+                name="feedback"
+                rows="6"
+                placeholder="Write your feedback..."
+                required
+            ></textarea>
+
+            <button type="submit" class="btn">
+                Send Feedback
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- FOUNDER -->
+    <!-- ============================= -->
+
+    <section class="founder-section">
+
+        <div class="founder-label">
+            Founder &amp; CEO
+        </div>
+
+        <div class="founder-name">
+            <span class="eson">Esona</span>
+            <span class="zepe">Zepe</span>
+        </div>
+
+        <div class="founder-line"></div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- POLICY -->
+    <!-- ============================= -->
+
+    <section class="policy-section">
+
+        <h2>Customer Policy</h2>
+
+        <div class="policy-card">
+
+            <h3>Founding Customer Access</h3>
+
+            <p>
+                Founding customers receive early access to Replinity
+                and help shape the development of the platform.
+            </p>
+
+        </div>
+
+        <div class="policy-card">
+
+            <h3>50% Founding Discount</h3>
+
+            <p>
+                Founding customers receive a 50% discount on their
+                applicable monthly plan for the first three months.
+            </p>
+
+        </div>
+
+        <div class="policy-card">
+
+            <h3>Building In Public</h3>
+
+            <p>
+                Replinity is continuously improving. Features,
+                integrations and functionality may evolve as the
+                platform develops.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ============================= -->
+<!-- FOOTER -->
+<!-- ============================= -->
+
+<footer>
+
+    <div>
+        <h3>REPLI<span style="color:#39ff14;">NITY</span></h3>
+
+        <p>
+            AI That Replies, So You Don't Have To.
+        </p>
+    </div>
+
+    <div>
+        <h3>Replinity</h3>
+
+        <p>
+            Never Miss A Customer Again.
+        </p>
+    </div>
+
+    <div>
+        <h3>© 2026 Replinity</h3>
+
+        <p>
+            All rights reserved.
+        </p>
+    </div>
+
+</footer>
+
+
+<!-- ============================= -->
+<!-- JAVASCRIPT -->
+<!-- ============================= -->
+
+<script>
+
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+
+menuBtn.addEventListener("click", function(){
+
+    sidebar.classList.toggle("active");
+
+    if(sidebar.classList.contains("active")){
+
+        menuBtn.innerHTML = "✕";
+        menuBtn.setAttribute("aria-label","Close menu");
+
+    }else{
+
+        menuBtn.innerHTML = "☰";
+        menuBtn.setAttribute("aria-label","Open menu");
+
+    }
+
+    menuBtn.classList.add("menu-clicked");
+
+    setTimeout(function(){
+
+        menuBtn.classList.remove("menu-clicked");
+
+    },150);
+
+});
+
+
+/* CLOSE MENU WHEN LINK IS CLICKED */
+
+document.querySelectorAll(".sidebar a").forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+        sidebar.classList.remove("active");
+
+        menuBtn.innerHTML = "☰";
+
+        menuBtn.setAttribute("aria-label","Open menu");
+
+    });
+
+});
+
+
+/* CURSOR GLOW */
+
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove",function(e){
+
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+
+});
+
+
+/* WAITLIST */
+
+const waitlistForm = document.getElementById("waitlistForm");
+
+if(waitlistForm){
+
+    waitlistForm.addEventListener("submit",function(e){
+
+        e.preventDefault();
+
+        alert(
+            "Thank you for joining the Replinity waitlist! 🚀"
+        );
+
+        waitlistForm.reset();
+
+    });
+
+}
+
+
+/* FEEDBACK */
+
+const feedbackForm = document.getElementById("feedbackForm");
+
+if(feedbackForm){
+
+    feedbackForm.addEventListener("submit",function(e){
+
+        e.preventDefault();
+
+        alert(
+            "Thank you for your feedback! 💚"
+        );
+
+        feedbackForm.reset();
+
+    });
+
+}
+
+</script>
+
+</body>
+
+                  </html>
