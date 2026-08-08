@@ -891,14 +891,105 @@ document.addEventListener("mousemove", (e) => {
     }
 });
 
-const audio = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=");
+    /* =========================
+   RREPLINITY FUTURISTIC CLICK SOUND
+========================= */
 
-document.querySelectorAll("button,a").forEach(item=>{
-    item.addEventListener("click",()=>{
-        audio.currentTime=0;
-        audio.play().catch(()=>{});
+let audioContext;
+
+function playClickSound() {
+
+    try {
+
+        if (!audioContext) {
+            audioContext = new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+        }
+
+        if (audioContext.state === "suspended") {
+            audioContext.resume();
+        }
+
+        const now = audioContext.currentTime;
+
+        /* Main futuristic click */
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+
+        oscillator.type = "sine";
+
+        oscillator.frequency.setValueAtTime(880, now);
+        oscillator.frequency.exponentialRampToValueAtTime(
+            1760,
+            now + 0.045
+        );
+
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(
+            0.12,
+            now + 0.005
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            now + 0.08
+        );
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start(now);
+        oscillator.stop(now + 0.08);
+
+        /* Tiny second layer for the futuristic "tech" feel */
+
+        const oscillator2 = audioContext.createOscillator();
+        const gain2 = audioContext.createGain();
+
+        oscillator2.type = "triangle";
+
+        oscillator2.frequency.setValueAtTime(1320, now);
+        oscillator2.frequency.exponentialRampToValueAtTime(
+            2200,
+            now + 0.035
+        );
+
+        gain2.gain.setValueAtTime(0.0001, now);
+        gain2.gain.exponentialRampToValueAtTime(
+            0.045,
+            now + 0.004
+        );
+
+        gain2.gain.exponentialRampToValueAtTime(
+            0.0001,
+            now + 0.055
+        );
+
+        oscillator2.connect(gain2);
+        gain2.connect(audioContext.destination);
+
+        oscillator2.start(now);
+        oscillator2.stop(now + 0.055);
+
+    } catch (error) {
+        console.log("Click sound unavailable:", error);
+    }
+}
+
+/* =========================
+   PLAY SOUND ON BUTTONS & LINKS
+========================= */
+
+document.querySelectorAll("button, a").forEach(item => {
+
+    item.addEventListener("click", () => {
+        playClickSound();
     });
+
 });
+    
 </script>
 
     <script type="module">
