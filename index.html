@@ -1187,4 +1187,973 @@ textarea{
     animation:floatParticle linear infinite;
 }
 
-@keyframes 
+@keyframes
+   floatParticle{
+    from{
+        transform:translateY(100%) translateX(0);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:.7;
+    }
+
+    to{
+        transform:translateY(-120%) translateX(40px);
+        opacity:0;
+    }
+}
+
+
+/* =========================
+   AI CHAT HEADER
+========================= */
+
+.ai-header{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px;
+    border-bottom:1px solid #222;
+    background:rgba(10,10,10,.95);
+}
+
+.ai-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.ai-icon{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#39ff14;
+    color:#000;
+    font-size:19px;
+    font-weight:900;
+    box-shadow:0 0 18px rgba(57,255,20,.35);
+}
+
+.ai-title{
+    text-align:left;
+}
+
+.ai-title strong{
+    display:block;
+    font-size:13px;
+    color:#fff;
+}
+
+.ai-title span{
+    display:block;
+    margin-top:4px;
+    font-size:9px;
+    color:#39ff14;
+    letter-spacing:1px;
+}
+
+.ai-close{
+    width:34px;
+    height:34px;
+    border:1px solid #333;
+    border-radius:9px;
+    background:#111;
+    color:#aaa;
+    cursor:pointer;
+    font-size:18px;
+    transition:.2s;
+}
+
+.ai-close:hover{
+    color:#39ff14;
+    border-color:#39ff14;
+}
+
+
+/* =========================
+   CHAT MESSAGES
+========================= */
+
+.ai-messages{
+    position:relative;
+    z-index:2;
+    flex:1;
+    overflow-y:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.ai-messages::-webkit-scrollbar{
+    width:4px;
+}
+
+.ai-messages::-webkit-scrollbar-thumb{
+    background:#39ff14;
+    border-radius:10px;
+}
+
+.chat-message{
+    max-width:85%;
+    padding:13px 15px;
+    border-radius:14px;
+    font-size:12px;
+    line-height:1.6;
+    animation:messageIn .3s ease;
+}
+
+@keyframes messageIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.bot-message{
+    align-self:flex-start;
+    background:#111;
+    border:1px solid #252525;
+    color:#ccc;
+    border-bottom-left-radius:4px;
+}
+
+.bot-message strong{
+    color:#39ff14;
+}
+
+.user-message{
+    align-self:flex-end;
+    background:#39ff14;
+    color:#000;
+    font-weight:700;
+    border-bottom-right-radius:4px;
+}
+
+
+/* =========================
+   QUICK QUESTIONS
+========================= */
+
+.ai-quick{
+    position:relative;
+    z-index:2;
+    display:flex;
+    gap:8px;
+    padding:0 15px 12px;
+    overflow-x:auto;
+}
+
+.ai-quick::-webkit-scrollbar{
+    display:none;
+}
+
+.quick-btn{
+    flex-shrink:0;
+    padding:9px 12px;
+    border:1px solid #292929;
+    border-radius:20px;
+    background:#101010;
+    color:#aaa;
+    font-size:9px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.quick-btn:hover{
+    border-color:#39ff14;
+    color:#39ff14;
+}
+
+
+/* =========================
+   CHAT INPUT
+========================= */
+
+.ai-input-area{
+    position:relative;
+    z-index:2;
+    display:flex;
+    gap:8px;
+    padding:14px;
+    border-top:1px solid #222;
+    background:#0b0b0b;
+}
+
+.ai-input{
+    flex:1;
+    min-width:0;
+    padding:13px 14px;
+    border:1px solid #292929;
+    border-radius:12px;
+    outline:none;
+    background:#111;
+    color:#fff;
+    font-size:11px;
+}
+
+.ai-input:focus{
+    border-color:#39ff14;
+    box-shadow:0 0 15px rgba(57,255,20,.15);
+}
+
+.ai-input::placeholder{
+    color:#555;
+}
+
+.ai-send{
+    width:46px;
+    border:none;
+    border-radius:12px;
+    background:#39ff14;
+    color:#000;
+    font-size:17px;
+    font-weight:900;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.ai-send:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 20px rgba(57,255,20,.4);
+}
+
+
+/* =========================
+   TYPING INDICATOR
+========================= */
+
+.typing{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    padding:12px 15px;
+    width:max-content;
+}
+
+.typing span{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#39ff14;
+    box-shadow:0 0 7px #39ff14;
+    animation:typingDot 1s infinite;
+}
+
+.typing span:nth-child(2){
+    animation-delay:.15s;
+}
+
+.typing span:nth-child(3){
+    animation-delay:.3s;
+}
+
+@keyframes typingDot{
+    0%,100%{
+        opacity:.25;
+        transform:translateY(0);
+    }
+
+    50%{
+        opacity:1;
+        transform:translateY(-3px);
+    }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:60px 25px 35px;
+    text-align:center;
+    border-top:1px solid #1c1c1c;
+    background:#050505;
+}
+
+.footer-brand{
+    font-size:25px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.footer-brand span{
+    color:#39ff14;
+    text-shadow:0 0 15px #39ff14;
+}
+
+.footer-text{
+    color:#555;
+    font-size:11px;
+    line-height:1.7;
+}
+
+.footer-copy{
+    margin-top:25px;
+    color:#333;
+    font-size:9px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+        max-width:800px;
+    }
+
+    .founding-plans{
+        grid-template-columns:1fr;
+        max-width:600px;
+    }
+
+    .founding-card.featured{
+        transform:none;
+    }
+
+}
+
+
+@media(max-width:800px){
+
+    .topHeader{
+        height:70px;
+        padding:0 14px;
+    }
+
+    .menuBtn{
+        display:block;
+    }
+
+    .brand h1{
+        font-size:24px;
+    }
+
+    .header-logo{
+        width:45px;
+        height:45px;
+    }
+
+    .sidebar{
+        top:70px;
+        height:calc(100vh - 70px);
+    }
+
+    .hero{
+        padding-top:125px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .section{
+        padding:80px 20px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .waitlist-reasons{
+        grid-template-columns:1fr;
+    }
+
+    .waitlist-box{
+        padding:45px 20px;
+    }
+
+    .about-section,
+    .how-section,
+    .vision-section,
+    .policy-section{
+        margin:70px auto;
+    }
+
+    .founder-section{
+        padding-top:90px;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .cursor{
+        display:none;
+    }
+
+    .backgroundLogo{
+        font-size:20vw;
+    }
+
+    .brand{
+        gap:8px;
+    }
+
+    .brand h1{
+        font-size:19px;
+    }
+
+    .menuBtn{
+        width:45px;
+        height:45px;
+        font-size:23px;
+        margin-right:8px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:14px;
+        line-height:1.7;
+    }
+
+    .hero-actions{
+        flex-direction:column;
+        align-items:stretch;
+        max-width:350px;
+        margin:auto;
+    }
+
+    .hero-actions .btn{
+        width:100%;
+    }
+
+    .ai-chat{
+        right:15px;
+        bottom:90px;
+        width:calc(100vw - 30px);
+        height:70vh;
+        max-height:600px;
+    }
+
+    .chat-launcher{
+        right:15px;
+        bottom:15px;
+        width:58px;
+        height:58px;
+    }
+
+    .founder-name{
+        font-size:48px;
+    }
+
+    .step{
+        align-items:flex-start;
+    }
+
+    .step span{
+        flex-shrink:0;
+    }
+
+}
+
+
+@media(min-width:801px){
+
+    .hero-content{
+        animation:heroFloat 6s ease-in-out infinite;
+    }
+
+}
+
+@keyframes heroFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+
+/* =========================
+   FAINT NEON AMBIENCE
+========================= */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(57,255,20,.035),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(57,255,20,.025),
+            transparent 30%
+        );
+}
+
+
+/* =========================
+   MOBILE SIDEBAR OVERLAY
+========================= */
+
+.sidebar-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(3px);
+    z-index:997;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+}
+
+.sidebar-overlay.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+
+/* =========================
+   FORM SUCCESS ANIMATION
+========================= */
+
+.success-pop{
+    animation:successPop .45s ease;
+}
+
+@keyframes successPop{
+
+    0%{
+        opacity:0;
+        transform:scale(.92);
+    }
+
+    70%{
+        transform:scale(1.03);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+Then after the closing "</style>", add this JavaScript before "</body>":
+
+<script>
+
+/* =========================
+   CURSOR GLOW
+========================= */
+
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+
+    if(cursor){
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+    }
+
+});
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuBtn = document.querySelector(".menuBtn");
+const sidebar = document.querySelector(".sidebar");
+const overlay = document.querySelector(".sidebar-overlay");
+
+function toggleMenu(){
+
+    if(!sidebar) return;
+
+    sidebar.classList.toggle("active");
+
+    if(overlay){
+        overlay.classList.toggle("active");
+    }
+
+}
+
+if(menuBtn){
+    menuBtn.addEventListener("click", toggleMenu);
+}
+
+if(overlay){
+    overlay.addEventListener("click", toggleMenu);
+}
+
+document.querySelectorAll(".sidebar a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        sidebar.classList.remove("active");
+
+        if(overlay){
+            overlay.classList.remove("active");
+        }
+
+    });
+
+});
+
+
+/* =========================
+   AI CHAT
+========================= */
+
+const chatLauncher = document.querySelector(".chat-launcher");
+const aiChat = document.querySelector(".ai-chat");
+const aiClose = document.querySelector(".ai-close");
+
+if(chatLauncher){
+
+    chatLauncher.addEventListener("click", () => {
+        aiChat.classList.toggle("active");
+    });
+
+}
+
+if(aiClose){
+
+    aiClose.addEventListener("click", () => {
+        aiChat.classList.remove("active");
+    });
+
+}
+
+
+/* =========================
+   AI PARTICLES
+========================= */
+
+const particleContainer = document.querySelector(".ai-particles");
+
+if(particleContainer){
+
+    for(let i = 0; i < 24; i++){
+
+        const particle = document.createElement("span");
+
+        particle.className = "ai-particle";
+
+        particle.style.left = Math.random() * 100 + "%";
+
+        particle.style.bottom = "-10px";
+
+        particle.style.animationDuration =
+            (5 + Math.random() * 8) + "s";
+
+        particle.style.animationDelay =
+            (Math.random() * 6) + "s";
+
+        particleContainer.appendChild(particle);
+
+    }
+
+}
+
+
+/* =========================
+   AI KNOWLEDGE
+========================= */
+
+const aiKnowledge = {
+
+    pricing:
+    "Replinity is launching with simple plans designed for growing businesses. Pricing is currently locked until launch, so joining the waitlist is the best way to stay informed.",
+
+    founder:
+    "Replinity was founded and is led by Esona Zepe, Founder & CEO.",
+
+    waitlist:
+    "The Replinity waitlist gives early supporters the opportunity to hear about launch updates and early access before the wider public.",
+
+    replinity:
+    "Replinity is an AI customer-response platform designed to help businesses respond to customers faster and avoid missed opportunities.",
+
+    features:
+    "Replinity is being built around AI-assisted customer replies, customer management, business information, analytics and tools that help businesses stay responsive.",
+
+    launch:
+    "Replinity is currently preparing for launch. Exact launch timing will be announced through official Replinity updates.",
+
+    funding:
+    "Early funding opportunities may be available for supporters who want to help Replinity grow before launch. Check the funding section for the current offer.",
+
+    contact:
+    "You can use the feedback section on this page to share ideas, questions or suggestions with the Replinity team."
+
+};
+
+
+/* =========================
+   AI RESPONSE
+========================= */
+
+function getAIResponse(question){
+
+    const q = question.toLowerCase();
+
+    if(
+        q.includes("price") ||
+        q.includes("cost") ||
+        q.includes("how much")
+    ){
+        return aiKnowledge.pricing;
+    }
+
+    if(
+        q.includes("founder") ||
+        q.includes("ceo") ||
+        q.includes("who made") ||
+        q.includes("owner")
+    ){
+        return aiKnowledge.founder;
+    }
+
+    if(
+        q.includes("waitlist") ||
+        q.includes("join")
+    ){
+        return aiKnowledge.waitlist;
+    }
+
+    if(
+        q.includes("what is replinity") ||
+        q.includes("what is this") ||
+        q.includes("replinity")
+    ){
+        return aiKnowledge.replinity;
+    }
+
+    if(
+        q.includes("feature") ||
+        q.includes("does it do") ||
+        q.includes("capabilities")
+    ){
+        return aiKnowledge.features;
+    }
+
+    if(
+        q.includes("launch") ||
+        q.includes("release")
+    ){
+        return aiKnowledge.launch;
+    }
+
+    if(
+        q.includes("fund") ||
+        q.includes("support")
+    ){
+        return aiKnowledge.funding;
+    }
+
+    if(
+        q.includes("contact") ||
+        q.includes("email") ||
+        q.includes("feedback")
+    ){
+        return aiKnowledge.contact;
+    }
+
+    return "I'm the Replinity information assistant. Ask me about Replinity, the waitlist, features, launch, pricing, funding or the founder.";
+}
+
+
+/* =========================
+   SEND MESSAGE
+========================= */
+
+const aiInput = document.querySelector(".ai-input");
+const aiSend = document.querySelector(".ai-send");
+const aiMessages = document.querySelector(".ai-messages");
+
+function addMessage(text, type){
+
+    if(!aiMessages) return;
+
+    const message = document.createElement("div");
+
+    message.className =
+        "chat-message " +
+        (type === "user"
+            ? "user-message"
+            : "bot-message");
+
+    message.textContent = text;
+
+    aiMessages.appendChild(message);
+
+    aiMessages.scrollTop =
+        aiMessages.scrollHeight;
+
+}
+
+
+function sendAIMessage(){
+
+    if(!aiInput) return;
+
+    const question =
+        aiInput.value.trim();
+
+    if(!question) return;
+
+    addMessage(question, "user");
+
+    aiInput.value = "";
+
+    setTimeout(() => {
+
+        const response =
+            getAIResponse(question);
+
+        addMessage(response, "bot");
+
+    }, 600);
+
+}
+
+
+if(aiSend){
+
+    aiSend.addEventListener(
+        "click",
+        sendAIMessage
+    );
+
+}
+
+
+if(aiInput){
+
+    aiInput.addEventListener(
+        "keydown",
+        (e) => {
+
+            if(e.key === "Enter"){
+                sendAIMessage();
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================
+   QUICK QUESTIONS
+========================= */
+
+document.querySelectorAll(".quick-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const question =
+            button.textContent.trim();
+
+        if(aiInput){
+
+            aiInput.value = question;
+
+            sendAIMessage();
+
+        }
+
+    });
+
+});
+
+
+/* =========================
+   WAITLIST FORM
+========================= */
+
+const waitlistForm =
+    document.getElementById("waitlistForm");
+
+if(waitlistForm){
+
+    waitlistForm.addEventListener("submit", (e) => {
+
+        e.preventDefault();
+
+        const message =
+            document.querySelector(".form-message");
+
+        if(message){
+
+            message.style.display = "block";
+
+            message.classList.add("success-pop");
+
+            message.textContent =
+                "You're on the Replinity waitlist. We'll keep you updated.";
+
+        }
+
+        waitlistForm.reset();
+
+    });
+
+}
+
+
+/* =========================
+   SMOOTH ANCHORS
+========================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    anchor.addEventListener("click", function(e){
+
+        const target =
+            document.querySelector(this.getAttribute("href"));
+
+        if(target){
+
+            e.preventDefault();
+
+            target.scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
