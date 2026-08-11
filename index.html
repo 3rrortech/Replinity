@@ -1900,7 +1900,7 @@ if (waitlistForm) waitlistForm.addEventListener('submit', async (e)=>{
     statusEl.textContent = 'Submitting...';
 
     const payload = {
-        name: document.getElementById('waitlistName').value.trim(),
+        owner_name: document.getElementById('waitlistName').value.trim(),
         business_name: document.getElementById('waitlistBusiness').value.trim(),
         whatsapp_number: document.getElementById('waitlistWhatsapp').value.trim(),
         email: document.getElementById('waitlistEmail').value.trim()
